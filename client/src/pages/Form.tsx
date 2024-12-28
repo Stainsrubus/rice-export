@@ -1,17 +1,29 @@
-import  { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
+
+type FormDataType = {
+  email: string;
+  phone: string;
+  message: string;
+};
+
+type FormErrorsType = {
+  email?: string;
+  phone?: string;
+  message?: string;
+};
 
 function Form() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormDataType>({
     email: "",
     phone: "",
     message: "",
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<FormErrorsType>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const validate = () => {
-    const newErrors = {};
+  const validate = (): FormErrorsType => {
+    const newErrors: FormErrorsType = {};
 
     if (!formData.email) {
       newErrors.email = "Email is required";
@@ -32,7 +44,7 @@ function Form() {
     return newErrors;
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -40,7 +52,7 @@ function Form() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     const validationErrors = validate();
@@ -74,7 +86,6 @@ function Form() {
           {/* Email and Phone Number */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              
               <input
                 type="email"
                 id="email"
@@ -89,7 +100,6 @@ function Form() {
               {errors.email && <p className="text-red-500 text-sm mt-2">{errors.email}</p>}
             </div>
             <div>
-           
               <input
                 type="tel"
                 id="phone"
@@ -107,11 +117,10 @@ function Form() {
 
           {/* Message */}
           <div>
-           
             <textarea
               id="message"
               name="message"
-              rows="5"
+              rows={5}
               value={formData.message}
               onChange={handleChange}
               className={`w-full px-4 py-2 border ${
@@ -126,7 +135,7 @@ function Form() {
           <div className="text-right">
             <button
               type="submit"
-                className="bg-[#017807] drop-shadow-btn text-lg text-white font-bold py-5 px-12 rounded-full font-ubuntu transition"
+              className="bg-[#017807] drop-shadow-btn text-lg text-white font-bold py-5 px-12 rounded-full font-ubuntu transition"
             >
               Submit
             </button>

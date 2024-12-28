@@ -1,7 +1,26 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
 
-const riceData = {
+// Define types for rice data
+interface Subcategory {
+  name: string;
+  image: string;
+  description: string;
+  benefits: string;
+  cookingInstructions: string;
+}
+
+interface Rice {
+  image: string;
+  description: string;
+  benefits: string;
+  cookingInstructions: string;
+  subcategories: Subcategory[];
+}
+
+type RiceData = Record<string, Rice>;
+
+const riceData: RiceData = {
   Ponni: {
     image: "/images/brand-rice.png",
     description: "Ponni rice is a popular variety in South India.",
@@ -56,16 +75,16 @@ const riceData = {
 };
 
 function ProductGallery() {
-  const [selectedRice, setSelectedRice] = useState(null);
-  const [expandedRice, setExpandedRice] = useState(null);
-  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+  const [selectedRice, setSelectedRice] = useState<string | null>(null);
+  const [expandedRice, setExpandedRice] = useState<string | null>(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState<Subcategory | null>(null);
 
   useEffect(() => {
-    const firstRice = Object.keys(riceData)[0]; 
+    const firstRice = Object.keys(riceData)[0];
     setSelectedRice(firstRice);
   }, []);
 
-  const handleRiceClick = (riceName) => {
+  const handleRiceClick = (riceName: string) => {
     if (riceData[riceName].subcategories.length > 0) {
       setExpandedRice(expandedRice === riceName ? null : riceName);
       if (expandedRice !== riceName) {
@@ -79,12 +98,12 @@ function ProductGallery() {
     }
   };
 
-  const handleSubcategoryClick = (riceName, subcategory) => {
+  const handleSubcategoryClick = (riceName: string, subcategory: Subcategory) => {
     setSelectedRice(riceName);
     setSelectedSubcategory(subcategory);
   };
 
-  const getDisplayData = () => {
+  const getDisplayData = (): Rice | Subcategory | null => {
     if (selectedSubcategory) {
       return selectedSubcategory;
     }
@@ -105,7 +124,7 @@ function ProductGallery() {
       </div>
 
       <div className="flex space-x-8">
-        <div className=" w-1/5">
+        <div className="w-1/5">
           <div className="space-y-2">
             {Object.keys(riceData).map((riceName) => (
               <div key={riceName} className="rounded-md overflow-hidden">
@@ -114,23 +133,23 @@ function ProductGallery() {
                     selectedRice === riceName && !selectedSubcategory
                       ? "text-[#017807]"
                       : "text-[#666666]"
-                  } `}
+                  }`}
                   onClick={() => handleRiceClick(riceName)}
                 >
                   <div className="flex items-center gap-2 w-full">
-                    <span className="text-xl">
-                      {riceName}
-                    </span>
+                    <span className="text-xl">{riceName}</span>
                     {selectedRice === riceName && !selectedSubcategory && (
                       <div className="w-3 h-6 bg-[#017807] rounded-r-full absolute left-0" />
                     )}
                   </div>
                   {riceData[riceName].subcategories.length > 0 && (
-                    <span className={` ${
-                      selectedRice === riceName && !selectedSubcategory 
-                        ? "text-[#017807]"
-                        : "text-gray-500"
-                    }`}>
+                    <span
+                      className={`${
+                        selectedRice === riceName && !selectedSubcategory
+                          ? "text-[#017807]"
+                          : "text-gray-500"
+                      }`}
+                    >
                       {expandedRice === riceName ? (
                         <ChevronDown size={20} />
                       ) : (
@@ -140,7 +159,7 @@ function ProductGallery() {
                   )}
                 </div>
                 {expandedRice === riceName && (
-                  <div className="">
+                  <div>
                     {riceData[riceName].subcategories.map((sub) => (
                       <div
                         key={sub.name}
@@ -148,14 +167,13 @@ function ProductGallery() {
                           selectedSubcategory?.name === sub.name
                             ? "text-[#017807]"
                             : "text-[#666666]"
-                        } `}
+                        }`}
                         onClick={() => handleSubcategoryClick(riceName, sub)}
                       >
                         <div className="flex items-center py-1 gap-5">
                           <span>{sub.name}</span>
                           {selectedSubcategory?.name === sub.name && (
-                                                 <div className="w-3 h-6 bg-[#017807] rounded-r-full absolute left-0" />
-
+                            <div className="w-3 h-6 bg-[#017807] rounded-r-full absolute left-0" />
                           )}
                         </div>
                       </div>
@@ -172,7 +190,7 @@ function ProductGallery() {
             <div className="w-1/3 flex items-center justify-center">
               <img
                 src={displayData.image}
-                alt={selectedSubcategory?.name || selectedRice}
+                alt={selectedSubcategory?.name || selectedRice || "Rice"}
                 className="w-[600px] h-[600px] shadow-lg"
               />
             </div>
@@ -183,15 +201,21 @@ function ProductGallery() {
               </h2>
               <div className="space-y-10">
                 <div>
-                  <p className="text-[#747582] font-ubuntu text-xl">{displayData.description}</p>
+                  <p className="text-[#747582] font-ubuntu text-xl">
+                    {displayData.description}
+                  </p>
                 </div>
                 <div>
-                    <h3 className=" text-2xl text-[#017807]">Benefits</h3>
-                    <p className="text-[#747582] font-ubuntu text-xl leading-relaxed">{displayData.benefits}</p>
+                  <h3 className="text-2xl text-[#017807]">Benefits</h3>
+                  <p className="text-[#747582] font-ubuntu text-xl leading-relaxed">
+                    {displayData.benefits}
+                  </p>
                 </div>
                 <div>
-                  <h3 className=" text-2xl text-[#017807]">Cooking Method</h3>
-                  <p className="text-[#747582] font-ubuntu text-xl leading-relaxed">{displayData.cookingInstructions}</p>
+                  <h3 className="text-2xl text-[#017807]">Cooking Method</h3>
+                  <p className="text-[#747582] font-ubuntu text-xl leading-relaxed">
+                    {displayData.cookingInstructions}
+                  </p>
                 </div>
               </div>
             </div>
