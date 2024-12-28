@@ -21,29 +21,7 @@ function Form() {
     message: "",
   });
 
-  const onSubmit = async (data: object) => {
-    
-    try {
-        const response = await _axios.post('/form/submit', data);
-        if (response.status===200) {
-          toast.success(response.data.message);
-          localStorage.removeItem('aprisioEmail');
-          localStorage.removeItem('verified');
-          localStorage.removeItem('name');
-          localStorage.removeItem('address');
-          localStorage.removeItem('mobile');
-          // reset();
-      } else {
-          toast.error(response.data.message);
-      }      
-    } catch (error) {
-        console.error('Error submitting form:', error);
-        toast.error("Failed to submit the form. Please try again.");
-    }
-};
-
   const [errors, setErrors] = useState<FormErrorsType>({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const validate = (): FormErrorsType => {
     const newErrors: FormErrorsType = {};
@@ -77,50 +55,44 @@ function Form() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-  
+
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-  
-    setErrors({});
-    setIsSubmitted(true);
-  
+
+    setErrors({}); // Clear previous errors
+
     try {
       const response = await _axios.post('/send-email', formData);
-  
+
       if (response.status === 200) {
         toast.success(response.data.message || "Form submitted successfully!");
-        // Reset form fields
         setFormData({
           email: "",
           phone: "",
           message: "",
         });
-  
-        // Reset submission status after some time (optional)
-        setTimeout(() => setIsSubmitted(false), 3000);
       } else {
         toast.error(response.data.message || "An unexpected error occurred.");
       }
     } catch (error: any) {
       console.error('Error submitting form:', error);
-  
-      // Handle specific server errors, if available
-      if (error.response && error.response.data && error.response.data.message) {
+      if (error.response?.data?.message) {
         toast.error(error.response.data.message);
       } else {
         toast.error("Failed to submit the form. Please try again.");
       }
     }
   };
-  
 
   return (
     <section className="px-20 py-24 flex justify-center items-center">
       <div className="bg-[#F3F4F3] w-5/6 py-8 px-20 rounded-lg shadow-md">
-        <h1 className="text-4xl text-center font-bold font-anderson text-[#282C4B] mb-8">Inquiry Form</h1>
+        <h1 className="text-4xl text-center font-bold font-anderson text-[#282C4B] mb-8">
+          Inquiry Form
+        </h1>
 
         <form className="space-y-6" onSubmit={handleSubmit}>
           {/* Email and Phone Number */}
@@ -137,7 +109,9 @@ function Form() {
                 } rounded-xl font-ubuntu focus:outline-none`}
                 placeholder="Email ID"
               />
-              {errors.email && <p className="text-red-500 text-sm mt-2">{errors.email}</p>}
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-2">{errors.email}</p>
+              )}
             </div>
             <div>
               <input
@@ -151,7 +125,9 @@ function Form() {
                 } rounded-xl font-ubuntu focus:outline-none`}
                 placeholder="Phone number"
               />
-              {errors.phone && <p className="text-red-500 text-sm mt-2">{errors.phone}</p>}
+              {errors.phone && (
+                <p className="text-red-500 text-sm mt-2">{errors.phone}</p>
+              )}
             </div>
           </div>
 
@@ -165,10 +141,12 @@ function Form() {
               onChange={handleChange}
               className={`w-full px-4 py-2 border ${
                 errors.message ? "border-red-500" : "border-[#B0B0B0]"
-              } rounded-xl font-ubuntu  focus:outline-none`}
+              } rounded-xl font-ubuntu focus:outline-none`}
               placeholder="Message"
             ></textarea>
-            {errors.message && <p className="text-red-500 text-sm mt-2">{errors.message}</p>}
+            {errors.message && (
+              <p className="text-red-500 text-sm mt-2">{errors.message}</p>
+            )}
           </div>
 
           {/* Submit Button */}
@@ -181,11 +159,6 @@ function Form() {
             </button>
           </div>
         </form>
-
-        {/* Success Message */}
-        {/* {isSubmitted && (
-          <p className="text-green-500 text-center mt-4">Your inquiry has been submitted successfully!</p>
-        )} */}
       </div>
     </section>
   );
