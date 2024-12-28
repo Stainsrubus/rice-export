@@ -56,7 +56,7 @@ Chennai
 <div className="flex gap-4">
     <img src={mail} alt="" />
     <p className="font-sans text-xl text-[#EDECECE3]">
-    aprisio@gmail.com
+    riceExport@gmail.com
     </p>
 </div>
     </div>
