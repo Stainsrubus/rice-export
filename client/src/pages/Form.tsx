@@ -1,4 +1,6 @@
 import { useState, ChangeEvent, FormEvent } from "react";
+import { _axios } from "../lib/_axios";
+import { toast } from "react-toastify";
 
 type FormDataType = {
   email: string;
@@ -18,6 +20,27 @@ function Form() {
     phone: "",
     message: "",
   });
+
+  const onSubmit = async (data: object) => {
+    
+    try {
+        const response = await _axios.post('/form/submit', data);
+        if (response.status===200) {
+          toast.success(response.data.message);
+          localStorage.removeItem('aprisioEmail');
+          localStorage.removeItem('verified');
+          localStorage.removeItem('name');
+          localStorage.removeItem('address');
+          localStorage.removeItem('mobile');
+          // reset();
+      } else {
+          toast.error(response.data.message);
+      }      
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        toast.error("Failed to submit the form. Please try again.");
+    }
+};
 
   const [errors, setErrors] = useState<FormErrorsType>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -52,30 +75,47 @@ function Form() {
     }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-
+  
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-    } else {
-      setErrors({});
-      setIsSubmitted(true);
-
-      // Simulate form submission (replace this with actual API call)
-      console.log("Form submitted:", formData);
-
-      // Reset form fields
-      setFormData({
-        email: "",
-        phone: "",
-        message: "",
-      });
-
-      // Reset submission status after some time (optional)
-      setTimeout(() => setIsSubmitted(false), 3000);
+      return;
+    }
+  
+    setErrors({});
+    setIsSubmitted(true);
+  
+    try {
+      const response = await _axios.post('/send-email', formData);
+  
+      if (response.status === 200) {
+        toast.success(response.data.message || "Form submitted successfully!");
+        // Reset form fields
+        setFormData({
+          email: "",
+          phone: "",
+          message: "",
+        });
+  
+        // Reset submission status after some time (optional)
+        setTimeout(() => setIsSubmitted(false), 3000);
+      } else {
+        toast.error(response.data.message || "An unexpected error occurred.");
+      }
+    } catch (error: any) {
+      console.error('Error submitting form:', error);
+  
+      // Handle specific server errors, if available
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Failed to submit the form. Please try again.");
+      }
     }
   };
+  
 
   return (
     <section className="px-20 py-24 flex justify-center items-center">
@@ -143,9 +183,9 @@ function Form() {
         </form>
 
         {/* Success Message */}
-        {isSubmitted && (
+        {/* {isSubmitted && (
           <p className="text-green-500 text-center mt-4">Your inquiry has been submitted successfully!</p>
-        )}
+        )} */}
       </div>
     </section>
   );
