@@ -116,7 +116,7 @@ function ProductGallery() {
   const displayData = getDisplayData();
 
   return (
-    <section className="pr-20 py-16 bg-[#F6F6F6CC]">
+    <section className="pr-20 py-24 bg-[#F6F6F6CC]">
       <div>
         <h1 className="text-[#282C4B] pl-20 pb-10 font-bold text-6xl font-anderson">
           Product Gallery

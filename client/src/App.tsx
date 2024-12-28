@@ -12,15 +12,25 @@ import Footer from "./pages/Footer"
 function App() {
   return (
 <>
+
 <NavBar/>
+<section id="home">
 <Home />
+</section>
+
 <Certified />
-<About />
+<section id="about">
+<About  />
+</section>
 <About2 />
 <Infra />
+<section id="product">
 <ProductGallery />
+</section>
 <FAQ />
+<section id="contact">
 <Form />
+</section>
 <Footer />
 </>
   )

@@ -9,12 +9,22 @@ function NavBar() {
     const toggleDrawer = () => {
       setIsDrawerOpen(!isDrawerOpen)
     }
+    
   
-    const handleNavClick = useCallback(() => {
-      if (isDrawerOpen) {
-        toggleDrawer()
-      }
-    }, [isDrawerOpen])
+    const handleNavClick = (sectionId: string) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        if (isDrawerOpen) {
+          toggleDrawer();
+        }
+      };
+
+    const createNavClickHandler = (sectionId: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault(); // Prevent default link behavior
+        handleNavClick(sectionId);
+      };
   
     useEffect(() => {
       const handleScroll = () => {
@@ -45,20 +55,26 @@ function NavBar() {
   
           {/* Nav Links - Hidden on small screens */}
           <div className="hidden lg:block font-ubuntu text-base">
-            <ul className="flex gap-12 text-[#747582] text-base">
-              <li>
-                <a href="/" onClick={handleNavClick}>Home</a>
-              </li>
-              <li>
-                <a href="/" onClick={handleNavClick}>About Us</a>
-              </li>
-              <li>
-                <a href="/" onClick={handleNavClick}>Product</a>
-              </li>
-              <li>
-                <a href="/" onClick={handleNavClick} className="border-[#017807] text-border font-bold text-sm border rounded-full py-5 px-8">Contact US</a>
-              </li>
-            </ul>
+          <ul className="flex gap-12 text-[#747582] text-base">
+  <li>
+    <a href="#home" onClick={createNavClickHandler("home")}>Home</a>
+  </li>
+  <li>
+    <a href="#about" onClick={createNavClickHandler("about")}>About Us</a>
+  </li>
+  <li>
+    <a href="#product" onClick={createNavClickHandler("product")}>Product</a>
+  </li>
+  <li>
+    <a
+      href="#contact"
+      onClick={createNavClickHandler("contact")}
+      className="border-[#017807] text-border font-bold text-sm border rounded-full py-5 px-8"
+    >
+      Contact Us
+    </a>
+  </li>
+</ul>
           </div>         
   
           {/* Hamburger menu - Visible on small screens */}
@@ -78,23 +94,26 @@ function NavBar() {
           } lg:hidden`}
         >
           <div className="flex flex-col h-full justify-between py-6 px-4">
-            <ul className="space-y-4 text-[#353535] font-semibold text-xl">
-              <li>
-                <a href="/#home" onClick={handleNavClick}>Home</a>
-              </li>
-              <li>
-                <a href="/#about" onClick={handleNavClick}>About Us</a>
-              </li>
-              <li>
-                <a href="/#events" onClick={handleNavClick}>Community</a>
-              </li>
-              <li>
-                <a href="/#join" onClick={handleNavClick}>Job</a>
-              </li>
-              <li>
-                <a href="/#footer" onClick={handleNavClick}>Contact</a>
-              </li>
-            </ul>
+          <ul className="flex gap-12 text-[#747582] text-base">
+  <li>
+    <a href="#home" onClick={createNavClickHandler("home")}>Home</a>
+  </li>
+  <li>
+    <a href="#about" onClick={createNavClickHandler("about")}>About Us</a>
+  </li>
+  <li>
+    <a href="#product" onClick={createNavClickHandler("product")}>Product</a>
+  </li>
+  <li>
+    <a
+      href="#contact"
+      onClick={createNavClickHandler("contact")}
+      className="border-[#017807] text-border font-bold text-sm border rounded-full py-5 px-8"
+    >
+      Contact Us
+    </a>
+  </li>
+</ul>
             <div className="space-y-4 font-mulish font-semibold text-lg">
               <button className="w-full bg-white rounded-full py-3 px-6 shadow border-[0.5px]">Log In</button>
               <button className="w-full bg-[#C9A74E] rounded-full py-3 px-6">Sign Up</button>
