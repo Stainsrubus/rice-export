@@ -1,1 +1,1 @@
-export const baseUrl = "http://localhost:4000/api/";
+export const baseUrl = "https://rice-export.onrender.com/api/";

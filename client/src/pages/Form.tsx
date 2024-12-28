@@ -116,10 +116,14 @@ function Form() {
             <div>
               <input
                 type="tel"
+                inputMode="numeric"
                 id="phone"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
+                onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10); 
+              }}
                 className={`w-full px-4 py-4 border ${
                   errors.phone ? "border-red-500" : "border-[#B0B0B0]"
                 } rounded-xl font-ubuntu focus:outline-none`}
