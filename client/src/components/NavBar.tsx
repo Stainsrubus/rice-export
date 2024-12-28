@@ -1,5 +1,5 @@
 import { X, Menu } from "lucide-react"
-import { useState, useCallback, useEffect } from "react"
+import { useState, useEffect } from "react"
 
 function NavBar() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false)
