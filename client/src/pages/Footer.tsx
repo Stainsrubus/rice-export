@@ -43,8 +43,12 @@ We specialize in exporting premium-quality rice globally, offering Basmati and n
 <div className="flex gap-4">
     <img src={location} alt="" />
     <p className="font-sans text-xl text-[#EDECECE3]">
-    28A, Padur Main Road,
-Chennai 
+    5-222-7, Main road,<br />
+Arunthathiyar Kudiyiruppu,<br/> Kaluneerkulam, Tenkasi
+Alangulam, <br/>
+Tirunelveli District,
+Tamil Nadu - 
+627851
     </p>
 </div>
 <div className="flex gap-4">
