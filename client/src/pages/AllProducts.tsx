@@ -789,12 +789,12 @@ const productData: Category[] = [
             <div className="mt-24 mx-16 px-4 py-8">
                 {/* Header */}
                 <header className="mb-8 flex items-center gap-3">
-                    <span onClick={()=>{navigate('/')}}  className='-mt-1'><img src={left} alt="arrow" /></span>
-                    <h1 className="text-6xl font-anderson font-bold text-[#282C4B]">Products</h1>
+                    <span onClick={()=>{navigate('/')}}  className='-mt-1'><img src={left}  alt="arrow" /></span>
+                    <h1 className="text-5xl font-anderson font-bold text-[#282C4B]">Products</h1>
                 </header>
 
                 <div>
-                    <div className='grid grid-cols-5 gap-12 py-3  pb-6 '>
+                    <div className='flex  gap-12 py-3  pb-6 '>
                         {reorderedCategories.map((category) => {
                             // Calculate total products in the category by summing products in all subcategories
                             const totalProducts = category.subcategories?.reduce((sum, subcategory) =>
@@ -807,10 +807,10 @@ const productData: Category[] = [
                                 <div 
                                     key={category.id} 
                                     onClick={() => handleCategoryClick(category.id)}
-                                    className={`p-2 flex text-base font-sans items-center rounded gap-3 ${isSelected ? 'bg-[#FA8232] text-white' : 'hover:bg-gray-50 text-[#5F6C72] '}`}
+                                    className={`p-2 cursor-pointer  flex text-base font-sans items-center rounded gap-3 ${isSelected ? 'bg-[#FA8232] w-64 text-white' : 'hover:bg-gray-50 text-[#5F6C72] '}`}
                                 >
                                     {category.name} 
-                                    <span className={`rounded-full border ${isSelected?'border-white text-[#FA8232] bg-white':'border-[#5F6C72]'}  flex items-center justify-center p-1 h-8 w-8`}>
+                                    <span className={`rounded-full  border ${isSelected?'border-white text-[#FA8232] bg-white':'border-[#5F6C72]'}  flex items-center justify-center p-1 h-8 w-8`}>
                                         {totalProducts}
                                     </span>
                                 </div>
@@ -882,7 +882,7 @@ const productData: Category[] = [
 
                     {/* Main Content - Product Details */}
                     {selectedProduct && (
-                        <div className="flex w-full">
+                        <div className="flex w-full cursor-default">
                             <div className="bg-white w-full">
                                 <div className="grid  grid-cols-1 gap-6">
                                     <div>

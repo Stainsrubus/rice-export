@@ -61,7 +61,7 @@ Oering aordable pricing without compromising on product quality.
 </div>
 <div className="flex flex-col gap-5">
 <div className="bg-[#017807] border-green-50/90 border-[7px] w-fit rounded-full">
-  <img src={clock} className="p-4" alt="" />
+  <img src={clock} className="p-3" alt="" />
 </div>
 <div>
 <h1 className="text-[#242527] pb-5 font-anderson font-bold  text-2xl">
@@ -74,7 +74,7 @@ Ensuring punctual delivery to meet client expectations globally.
 </div>
 <div className="flex flex-col gap-5">
 <div className="bg-[#017807] border-green-50/90 border-[7px] w-fit rounded-full">
-  <img src={shield} className="p-4" alt="" />
+  <img src={shield} className="p-3" alt="" />
 </div>
 <div>
 <h1 className="text-[#242527] pb-5 font-anderson font-bold  text-2xl">

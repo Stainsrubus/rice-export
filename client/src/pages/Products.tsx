@@ -377,7 +377,7 @@ function Products() {
         <h1 className="text-[#282C4B] pl-20 pb-10 font-bold text-6xl font-anderson">
           Products
         </h1>
-        <p onClick={handleViewMoreClick} className="font-ubuntu gap-3 flex justify-center items-center text-3xl text-[#017807] font-medium">
+        <p onClick={handleViewMoreClick} className="cursor-pointer font-ubuntu gap-3 flex justify-center items-center text-3xl text-[#017807] font-medium">
           View More 
           <span className="text-white p-1 bg-[#017807]  rounded-full"> 
 <img src={ArrowRight} alt="arrow" />
@@ -402,7 +402,7 @@ function Products() {
         </div>
 
       </div>
-      <div className="flex justify-center items-center pt-20">
+      <div className="flex justify-center items-center pt-20 cursor-pointer">
          <div className="">
          <p onClick={handleViewMoreClick} className="font-ubuntu gap-3  flex justify-center items-center text-3xl text-[#017807] font-medium">
           View More 

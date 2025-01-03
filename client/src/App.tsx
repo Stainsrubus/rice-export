@@ -1,25 +1,33 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import NavBar from "./components/NavBar";
-import About from "./pages/About";
-import About2 from "./pages/About2";
-import Certified from "./pages/Certified";
-import FAQ from "./pages/FAQ";
-import Home from "./pages/Home";
-import Infra from "./pages/Infra";
-import Form from "./pages/Form";
-import Footer from "./pages/Footer";
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import About from './pages/About';
+import About2 from './pages/About2';
+import Certified from './pages/Certified';
+import FAQ from './pages/FAQ';
+import Home from './pages/Home';
+import Infra from './pages/Infra';
+import Form from './pages/Form';
+import Footer from './pages/Footer';
 import AllProducts from './pages/AllProducts';
 import Products from './pages/Products';
 
 function App() {
+  const createNavClickHandler = (id: string) => (event: React.MouseEvent) => {
+    event.preventDefault(); // Prevent default anchor behavior
+
+    // Scroll to the section with the corresponding ID
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <Router>
-     
+      <NavBar />
       <Routes>
-        {/* Single Route for the Root Path that includes all the sections */}
         <Route path="/" element={
           <>
-           <NavBar />
             <section id="home">
               <Home />
             </section>
@@ -38,12 +46,10 @@ function App() {
             </section>
             <Footer />
           </>
-          
         } />
 
         <Route path="/product/:index" element={<AllProducts />} />
       </Routes>
-     
     </Router>
   );
 }
