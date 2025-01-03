@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import About from './pages/About';
 import About2 from './pages/About2';
@@ -10,17 +10,10 @@ import Form from './pages/Form';
 import Footer from './pages/Footer';
 import AllProducts from './pages/AllProducts';
 import Products from './pages/Products';
+import WhatsAppFloat from './pages/WhatsAppFloat';
 
 function App() {
-  const createNavClickHandler = (id: string) => (event: React.MouseEvent) => {
-    event.preventDefault(); // Prevent default anchor behavior
 
-    // Scroll to the section with the corresponding ID
-    const target = document.getElementById(id);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <Router>
@@ -47,9 +40,9 @@ function App() {
             <Footer />
           </>
         } />
-
         <Route path="/product/:index" element={<AllProducts />} />
       </Routes>
+      <WhatsAppFloat />
     </Router>
   );
 }
