@@ -31,7 +31,11 @@ Best Rice Export Company
 </div>
 
 <div className="w-5/6">
-<p className="font-ubuntu text-xl !leading-loose text-[#747582]">We specialize in exporting premium-quality rice globally, offering Basmati and non-Basmati varieties. Our rice is known for purity, freshness, and sustainability, ensuring satisfaction with every shipment through efficient and reliable service.</p>
+<p className="font-ubuntu text-xl !leading-loose text-[#747582]">
+At Vasundha Exim Rice Export, we deliver premium Indian rice with a legacy of over 10 years.
+Rooted in tradition and driven by quality, we connect the richness of Indian agriculture to
+global tables.
+ </p>
 </div>
 
 <div className="flex pt-16 pb-2 justify-start gap-8 items-center">

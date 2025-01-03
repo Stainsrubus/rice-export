@@ -48,7 +48,7 @@ function NavBar() {
         <div className={`flex justify-between items-center ${padding}   px-20`}>
           <a href="/">
             <div className="font-ubuntu text-2xl font-bold italic">
-               <span className="text-[#017807]">RICE</span> EXPORT
+               <span className="text-[#017807]">VASUNDHA</span> EXIM
               {/* <img src={logo} alt='logo' className='lg:h-9 h-6 lg:w-32 w-24' /> */}
             </div>
           </a>

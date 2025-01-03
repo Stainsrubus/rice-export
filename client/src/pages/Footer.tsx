@@ -50,7 +50,7 @@ Chennai
 <div className="flex gap-4">
     <img src={call} alt="" />
     <p className="font-sans text-xl text-[#EDECECE3]">
-    +91 8596325841
+    +91  9443495558
     </p>
 </div>
 <div className="flex gap-4">

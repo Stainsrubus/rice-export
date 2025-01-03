@@ -2,7 +2,8 @@ import { useState } from "react";
 import counter from "../../public/images/Counter (2).png"
 import experience from "../../public/svg/experience.svg"
 import Export from "../../public/svg/export.svg"
-import harvest from "../../public/svg/harvest.svg"
+import Quality from "../../public/svg/quality.svg"
+import review from "../../public/svg/review.svg"
 import Plus from "../../public/svg/plus-circle.svg"
 import Minus from "../../public/svg/minus-circle.svg"
 import rice from "../../public/images/yellow-rice-seeds-wooden-cup-concrete 1.png"
@@ -50,7 +51,7 @@ function FAQ() {
                     <div className="flex  flex-col   text-white justify-center items-center gap-5">
                         <img src={experience} alt="" />
                         <p className="font-poppins text-2xl font-semibold">
-                            25+
+                            10+
                         </p>
                         <p className="font-poppins font-semibold text-xl">
                             Year Of  Experience
@@ -59,22 +60,22 @@ function FAQ() {
                     </div>
 
                     <div className="flex  flex-col   text-white justify-center items-center gap-5">
-                        <img src={harvest} alt="" />
+                        <img src={Quality} alt="" />
                         <p className="font-poppins text-2xl font-semibold">
-                            100+
+                            100%
                         </p>
                         <p className="font-poppins font-semibold text-xl">
-                            High Quality
+                            Assured Quality
                         </p>
 
                     </div>
                     <div className="flex  flex-col   text-white justify-center items-center gap-5">
-                        <img src={harvest} alt="" />
+                        <img src={review} alt="" />
                         <p className="font-poppins text-2xl font-semibold">
-                            25+
+                            50+
                         </p>
                         <p className="font-poppins font-semibold text-xl">
-                            Best Harvesting
+                            Client Satisfaction
                         </p>
 
                     </div>

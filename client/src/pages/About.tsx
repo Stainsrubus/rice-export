@@ -17,10 +17,16 @@ Who we are
 </h1>
 <div className="text-[#747582] pt-10 flex flex-col font-ubuntu text-xl">
 <p className="leading-loose">
-Your Company Name was established with a vision to bring the finest Indian rice to global markets. Since our inception, we have been committed to delivering premium-quality rice, preserving its authenticity and unmatched taste.
+At <span className="font-bold">Vasundha Exim Rice Export</span>, our journey began with a shared vision of two passionate
+entrepreneurs, <span className="font-bold">Gowthaman</span> and <span className="font-bold">Kalin Suresh</span>. United by a deep-rooted commitment to
+excellence, we established Vasundha Exim to connect the richness of Indian rice to global
+markets. 
 </p>
 <p className="leading-loose pt-10">
-We specialize in sourcing premium Basmati and non-Basmati rice, ensuring freshness, quality, timely delivery, and satisfaction for global customers.
+With <span className="font-bold">over 10 years of experience</span> , we have honed our expertise to deliver India’s
+nest rice to the global stage. Our journey is a testament to hard work and excellence,
+combining traditional values with modern practices to ensure that every grain we export
+carries the rich heritage of Indian agriculture.
 </p>
 </div>
     </div>

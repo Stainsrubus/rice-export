@@ -22,7 +22,13 @@ function About2() {
     </p>
 </div>
 <div className="w-1/2">
-<p className="text-[#747582] w-5/6 font-ubuntu text-xl !leading-loose">Your Company Name was established with a vision to bring the finest Indian rice to global markets. Since our inception, we have been committed to delivering premium-quality rice, preserving its authenticity and unmatched taste.</p>
+<p className="text-[#747582] w-5/6 font-ubuntu text-xl !leading-loose">At <span className="font-bold">Vasundha Exim Rice Export</span>, we stand out for our unwavering focus on quality,
+sustainability, and customer satisfaction. With <span className="font-bold">10+ years of experience</span>, we deliver premium
+rice varieties that meet global standards. Our diverse portfolio caters to unique tastes, from
+aromatic Basmati to traditional hand-pounded rice. We prioritize sustainable practices,
+supporting farmers and preserving the environment. Our customer-rst approach ensures
+tailored solutions, timely deliveries, and exceptional service. Trust us to bring the richness of
+Indian rice to your table with excellence.</p>
 </div>
 </div>
 <div className="flex gap-20 pb-10">
@@ -35,7 +41,7 @@ function About2() {
 Experienced
 </h1>
 <p className="text-[#747582] text-lg font-medium !leading-relaxed">
-Decades of expertise delivering premium rice worldwide, exceeding expectations.
+With over 10 years of expertise, we ensure quality and reliability in exports
 </p>
 </div>
 </div>
@@ -49,7 +55,7 @@ Decades of expertise delivering premium rice worldwide, exceeding expectations.
 Competitive price
 </h1>
 <p className="text-[#747582] text-lg font-medium !leading-relaxed">
-Providing premium rice at competitive prices, ensuring value for our global customers.
+Oering aordable pricing without compromising on product quality.
 </p>
 </div>
 </div>
@@ -62,7 +68,7 @@ Providing premium rice at competitive prices, ensuring value for our global cust
 On Time
 </h1>
 <p className="text-[#747582] text-lg font-medium !leading-relaxed">
-Guaranteed on-time delivery, ensuring your rice reaches you promptly and efficiently.
+Ensuring punctual delivery to meet client expectations globally.
 </p>
 </div>
 </div>
@@ -75,7 +81,7 @@ Guaranteed on-time delivery, ensuring your rice reaches you promptly and efficie
 Best Materials
 </h1>
 <p className="text-[#747582] text-lg font-medium !leading-relaxed">
-Providing the best rice products, ensuring superior quality, freshness, and authentic flavor globally.
+Sourcing premium quality rice for exceptional taste and texture.
 </p>
 </div>
 </div>
