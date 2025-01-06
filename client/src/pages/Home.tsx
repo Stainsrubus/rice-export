@@ -32,7 +32,7 @@ Best Rice Export Company
 
 <div className="w-5/6">
 <p className="font-ubuntu text-xl !leading-loose text-[#747582]">
-At Vasundha Exim Rice Export, we deliver premium Indian rice with a legacy of over 10 years.
+At Vasudha Exim Rice Export, we deliver premium Indian rice with a legacy of over 10 years.
 Rooted in tradition and driven by quality, we connect the richness of Indian agriculture to
 global tables.
  </p>

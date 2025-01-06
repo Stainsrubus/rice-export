@@ -22,7 +22,7 @@ function About2() {
     </p>
 </div>
 <div className="w-1/2">
-<p className="text-[#747582] w-5/6 font-ubuntu text-xl !leading-loose">At <span className="font-bold">Vasundha Exim Rice Export</span>, we stand out for our unwavering focus on quality,
+<p className="text-[#747582] w-5/6 font-ubuntu text-xl !leading-loose">At <span className="font-bold">Vasudha Exim Rice Export</span>, we stand out for our unwavering focus on quality,
 sustainability, and customer satisfaction. With <span className="font-bold">10+ years of experience</span>, we deliver premium
 rice varieties that meet global standards. Our diverse portfolio caters to unique tastes, from
 aromatic Basmati to traditional hand-pounded rice. We prioritize sustainable practices,

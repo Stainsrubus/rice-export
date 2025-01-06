@@ -17,9 +17,9 @@ Who we are
 </h1>
 <div className="text-[#747582] pt-10 flex flex-col font-ubuntu text-xl">
 <p className="leading-loose">
-At <span className="font-bold">Vasundha Exim Rice Export</span>, our journey began with a shared vision of two passionate
+At <span className="font-bold">Vasudha Exim Rice Export</span>, our journey began with a shared vision of two passionate
 entrepreneurs, <span className="font-bold">Gowthaman</span> and <span className="font-bold">Kalin Suresh</span>. United by a deep-rooted commitment to
-excellence, we established Vasundha Exim to connect the richness of Indian rice to global
+excellence, we established Vasudha Exim to connect the richness of Indian rice to global
 markets. 
 </p>
 <p className="leading-loose pt-10">

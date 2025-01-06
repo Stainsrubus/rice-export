@@ -9,7 +9,7 @@ function Infra() {
         Infrastructure
         </h1>
         <p className="text-[#747582] text-center w-1/2 font-ubuntu text-xl">
-        Vasundha Exim boasts advanced infrastructure for seamless rice processing, strict quality checks, and prompt delivery to satisfy global requirements.
+        Vasudha Exim boasts advanced infrastructure for seamless rice processing, strict quality checks, and prompt delivery to satisfy global requirements.
         </p>
     </div>
     <div className="flex pt-20 items-center justify-evenly">
