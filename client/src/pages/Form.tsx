@@ -2,6 +2,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { _axios } from "../lib/_axios";
 import { toast } from "react-toastify";
 import { ImSpinner2 } from "react-icons/im";
+import { useMutation } from "@tanstack/react-query";
 
 type FormDataType = {
   email: string;
@@ -15,6 +16,18 @@ type FormErrorsType = {
   message?: string;
 };
 
+type ApiResponse = {
+  message: string;
+};
+
+type ApiError = {
+  response?: {
+    data?: {
+      message?: string;
+    };
+  };
+};
+
 function Form() {
   const [formData, setFormData] = useState<FormDataType>({
     email: "",
@@ -23,7 +36,7 @@ function Form() {
   });
 
   const [errors, setErrors] = useState<FormErrorsType>({});
-const[isSubmitting,setIsSubmitting]=useState(false);
+
   const validate = (): FormErrorsType => {
     const newErrors: FormErrorsType = {};
 
@@ -52,47 +65,43 @@ const[isSubmitting,setIsSubmitting]=useState(false);
       ...prevData,
       [name]: value,
     }));
+    setErrors(prev => ({
+      ...prev,
+      [name]: undefined
+    }));
   };
+
+  const { mutate, isPending, isError } = useMutation({
+    mutationFn: async (data: FormDataType): Promise<ApiResponse> => {
+      const response = await _axios.post('/send-email', data);
+      return response.data;
+    },
+    onSuccess: (data) => {
+      toast.success(data.message || "Form submitted successfully!");
+      setFormData({
+        email: "",
+        phone: "",
+        message: "",
+      });
+      setErrors({});
+    },
+    onError: (error: ApiError) => {
+      toast.error(error?.response?.data?.message || "Failed to submit the form. Please try again.");
+      console.error('Error submitting form:', error);
+    }
+  });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-setIsSubmitting(true);
     const validationErrors = validate();
+    
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      setIsSubmitting(false)
       return;
     }
 
-    setErrors({}); // Clear previous errors
-
-    try {
-      const response = await _axios.post('/send-email', formData);
-
-      if (response.status === 200) {
-        setIsSubmitting(false)
-        toast.success(response.data.message || "Form submitted successfully!");
-        setFormData({
-          email: "",
-          phone: "",
-          message: "",
-        });
-      
-      } else {
-        setIsSubmitting(false)
-        toast.error(response.data.message || "An unexpected error occurred.");
-      }
-    } catch (error: any) {
-      setIsSubmitting(false)
-      console.error('Error submitting form:', error);
-      if (error.response?.data?.message) {
-        setIsSubmitting(false)
-        toast.error(error.response.data.message);
-      } else {
-        setIsSubmitting(false)
-        toast.error("Failed to submit the form. Please try again.");
-      }
-    }
+    setErrors({});
+    mutate(formData); 
   };
 
   return (
@@ -103,7 +112,6 @@ setIsSubmitting(true);
         </h1>
 
         <form className="space-y-6" onSubmit={handleSubmit}>
-          {/* Email and Phone Number */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <input
@@ -112,9 +120,12 @@ setIsSubmitting(true);
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                disabled={isPending}
                 className={`w-full px-4 py-4 border ${
                   errors.email ? "border-red-500" : "border-[#B0B0B0]"
-                } rounded-xl font-ubuntu focus:outline-none`}
+                } rounded-xl font-ubuntu focus:outline-none ${
+                  isPending ? "bg-gray-100" : ""
+                }`}
                 placeholder="Email ID"
               />
               {errors.email && (
@@ -129,12 +140,15 @@ setIsSubmitting(true);
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
+                disabled={isPending}
                 onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
                   e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10); 
-              }}
+                }}
                 className={`w-full px-4 py-4 border ${
                   errors.phone ? "border-red-500" : "border-[#B0B0B0]"
-                } rounded-xl font-ubuntu focus:outline-none`}
+                } rounded-xl font-ubuntu focus:outline-none ${
+                  isPending ? "bg-gray-100" : ""
+                }`}
                 placeholder="Phone number"
               />
               {errors.phone && (
@@ -143,7 +157,6 @@ setIsSubmitting(true);
             </div>
           </div>
 
-          {/* Message */}
           <div>
             <textarea
               id="message"
@@ -151,9 +164,12 @@ setIsSubmitting(true);
               rows={5}
               value={formData.message}
               onChange={handleChange}
+              disabled={isPending}
               className={`w-full px-4 py-2 border ${
                 errors.message ? "border-red-500" : "border-[#B0B0B0]"
-              } rounded-xl font-ubuntu focus:outline-none`}
+              } rounded-xl font-ubuntu focus:outline-none ${
+                isPending ? "bg-gray-100" : ""
+              }`}
               placeholder="Message"
             ></textarea>
             {errors.message && (
@@ -161,13 +177,28 @@ setIsSubmitting(true);
             )}
           </div>
 
-          {/* Submit Button */}
+          {isError && (
+            <div className="text-red-500 text-sm text-center">
+              An error occurred while submitting the form. Please try again.
+            </div>
+          )}
+
           <div className="text-right">
             <button
               type="submit"
-              className={`bg-[#017807] drop-shadow-btn text-lg text-white font-bold py-5 px-12 ${isSubmitting?'cursor-not-allowed':'cursor-pointer'} rounded-full font-ubuntu transition`}
+              disabled={isPending}
+              className={`bg-[#017807] drop-shadow-btn text-lg text-white font-bold py-5 px-12 
+                ${isPending ? 'opacity-70 cursor-not-allowed' : 'hover:bg-[#015605] cursor-pointer'} 
+                rounded-full font-ubuntu transition-all duration-200`}
             >
-        {isSubmitting?<><span className="flex items-center gap-2">Submitting<ImSpinner2 className="animate-spin " size={20} /></span></>:<><span>Submit</span></>}
+              {isPending ? (
+                <span className="flex items-center gap-2">
+                  Submitting
+                  <ImSpinner2 className="animate-spin" size={20} />
+                </span>
+              ) : (
+                <span>Submit</span>
+              )}
             </button>
           </div>
         </form>
