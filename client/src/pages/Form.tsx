@@ -60,6 +60,7 @@ setIsSubmitting(true);
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
+      setIsSubmitting(false)
       return;
     }
 
@@ -85,6 +86,7 @@ setIsSubmitting(true);
       setIsSubmitting(false)
       console.error('Error submitting form:', error);
       if (error.response?.data?.message) {
+        setIsSubmitting(false)
         toast.error(error.response.data.message);
       } else {
         setIsSubmitting(false)
