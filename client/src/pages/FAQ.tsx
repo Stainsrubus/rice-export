@@ -41,12 +41,12 @@ function FAQ() {
 
 
     return (
-        <section className="py-20">
+        <section className="py-20 ">
             <section>
-                <div className="absolute h-[300px]">
+                <div className="absolute h-[300px] flex justify-center items-center">
                     <img src={counter} alt="" />
                 </div>
-                <div className="relative z-10 h-[300px] flex items-center justify-around">
+                <div className="relative z-10 h-[300px] flex items-center  justify-around">
 
                     <div className="flex  flex-col   text-white justify-center items-center gap-5">
                         <img src={experience} alt="" />
