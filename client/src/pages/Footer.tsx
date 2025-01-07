@@ -12,7 +12,7 @@ function Footer() {
 <div className="w-1/2">
 <a href="/">
             <div className="font-ubuntu text-2xl font-bold italic">
-               <span className="text-white">RICE</span> EXPORT
+               <span className="text-white">VASUDHA</span> EXIM
             </div>
           </a>
 <p className="font-ubuntu text-xl leading-loose pt-10 text-white">
@@ -60,7 +60,7 @@ Tamil Nadu -
 <div className="flex gap-4">
     <img src={mail} alt="" />
     <p className="font-sans text-xl text-[#EDECECE3]">
-    riceExport@gmail.com
+    vasudhaexim1@gmail.com
     </p>
 </div>
     </div>

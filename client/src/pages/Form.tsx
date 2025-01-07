@@ -1,6 +1,7 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { _axios } from "../lib/_axios";
 import { toast } from "react-toastify";
+import { ImSpinner2 } from "react-icons/im";
 
 type FormDataType = {
   email: string;
@@ -22,7 +23,7 @@ function Form() {
   });
 
   const [errors, setErrors] = useState<FormErrorsType>({});
-
+const[isSubmitting,setIsSubmitting]=useState(false);
   const validate = (): FormErrorsType => {
     const newErrors: FormErrorsType = {};
 
@@ -55,7 +56,7 @@ function Form() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-
+setIsSubmitting(true);
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
@@ -68,20 +69,25 @@ function Form() {
       const response = await _axios.post('/send-email', formData);
 
       if (response.status === 200) {
+        setIsSubmitting(false)
         toast.success(response.data.message || "Form submitted successfully!");
         setFormData({
           email: "",
           phone: "",
           message: "",
         });
+      
       } else {
+        setIsSubmitting(false)
         toast.error(response.data.message || "An unexpected error occurred.");
       }
     } catch (error: any) {
+      setIsSubmitting(false)
       console.error('Error submitting form:', error);
       if (error.response?.data?.message) {
         toast.error(error.response.data.message);
       } else {
+        setIsSubmitting(false)
         toast.error("Failed to submit the form. Please try again.");
       }
     }
@@ -157,9 +163,9 @@ function Form() {
           <div className="text-right">
             <button
               type="submit"
-              className="bg-[#017807] drop-shadow-btn text-lg text-white font-bold py-5 px-12 rounded-full font-ubuntu transition"
+              className={`bg-[#017807] drop-shadow-btn text-lg text-white font-bold py-5 px-12 ${isSubmitting?'cursor-not-allowed':'cursor-pointer'} rounded-full font-ubuntu transition`}
             >
-              Submit
+        {isSubmitting?<><span className="flex items-center gap-2">Submitting<ImSpinner2 className="animate-spin " size={20} /></span></>:<><span>Submit</span></>}
             </button>
           </div>
         </form>
