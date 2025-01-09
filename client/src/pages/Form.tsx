@@ -105,9 +105,9 @@ function Form() {
   };
 
   return (
-    <section className="px-20 py-24 flex justify-center items-center">
-      <div className="bg-[#F3F4F3] w-5/6 py-8 px-20 rounded-lg shadow-md">
-        <h1 className="text-4xl text-center font-bold font-anderson text-[#282C4B] mb-8">
+    <section className="lg:px-20 md:py-24 py-10 px-5 flex justify-center items-center">
+      <div className="bg-[#F3F4F3] lg:w-5/6 w-full py-8 lg:px-20 px-5 rounded-lg shadow-md">
+        <h1 className="lg:text-4xl text-3xl text-center font-bold font-anderson text-[#282C4B] mb-8">
           Inquiry Form
         </h1>
 
@@ -183,7 +183,7 @@ function Form() {
             </div>
           )}
 
-          <div className="text-right">
+          <div className="lg:text-right text-center">
             <button
               type="submit"
               disabled={isPending}

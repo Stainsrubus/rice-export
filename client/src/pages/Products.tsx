@@ -372,12 +372,12 @@ function Products() {
   };
 
   return (
-    <section className="pr-20 py-24 ">
-      <div className="flex justify-between pb-10">
-        <h1 className="text-[#282C4B] pl-20 pb-10 font-bold text-6xl font-anderson">
+    <section className="lg:pr-20 px-5 lg:py-24 py-5">
+      <div className="flex justify-between  pb-10">
+        <h1 className="text-[#282C4B] lg:pl-20 lg:pb-10 font-bold lg:text-6xl text-3xl font-anderson">
           Products
         </h1>
-        <p onClick={handleViewMoreClick} className="cursor-pointer font-ubuntu gap-3 flex justify-center items-center text-3xl text-[#017807] font-medium">
+        <p onClick={handleViewMoreClick} className="cursor-pointer font-ubuntu lg:gap-3 gap-1 flex justify-center items-center lg:text-3xl text-lg text-[#017807] font-medium">
           View More 
           <span className="text-white p-1 bg-[#017807]  rounded-full"> 
 <img src={ArrowRight} alt="arrow" />
@@ -386,25 +386,25 @@ function Products() {
       </div>
 
       <div className="flex ">
-         <div className="grid grid-cols-3  pl-20 w-full justify-between gap-10">
+         <div className="grid lg:grid-cols-3 grid-cols-2  lg:pl-20 w-full justify-between lg:gap-10 gap-3">
          {riceSubcategories.map((subcategory:any,index:any) => (
-  <div key={subcategory.id} className="hover:shadow-lg h-[500px] w-[410px] transition-shadow cursor-pointer">
+  <div key={subcategory.id} className="hover:shadow-lg lg:h-[500px] lg:w-[410px] transition-shadow cursor-pointer">
     <div className="flex justify-center">
-      <img src={subcategory.image} alt={`${subcategory.name} image`} className="  object-cover w-[410px] h-[350px]" />
+      <img src={subcategory.image} alt={`${subcategory.name} image`} className="  object-cover lg:w-[410px] lg:h-[350px] h-[145px] w-[171px]" />
     </div>
-    <div className="p-6 text-center">
-      <h3 className="font-bold text-4xl text-[#282C4B] font-anderson mb-2">{subcategory.name}</h3>
-      <p className="text-xl font-ubuntu font-medium text-[#747582] mb-3">{subcategory.products.length} Varieties</p>
-      <p  onClick={() => handleKnowMoreClick(index,subcategory.id)}  className="font-ubuntu hover:underline font-medium text-lg text-[#017807]">Know More</p>
+    <div className="pt-6 py-6 text-center">
+      <h3 className="font-bold lg:text-4xl text-lg text-[#282C4B] font-anderson mb-2">{subcategory.name}</h3>
+      <p className="lg:text-xl text-base font-ubuntu font-medium text-[#747582] mb-3">{subcategory.products.length} Varieties</p>
+      <p  onClick={() => handleKnowMoreClick(index,subcategory.id)}  className="font-ubuntu hover:underline font-medium lg:text-lg text-base text-[#017807]">Know More</p>
     </div>
   </div>
 ))}
         </div>
 
       </div>
-      <div className="flex justify-center items-center pt-20 cursor-pointer">
+      <div className="flex justify-center items-center lg:pt-20 pt-10 cursor-pointer">
          <div className="">
-         <p onClick={handleViewMoreClick} className="font-ubuntu gap-3  flex justify-center items-center text-3xl text-[#017807] font-medium">
+         <p onClick={handleViewMoreClick} className="font-ubuntu gap-3  flex justify-center items-center text-3xl  text-[#017807] font-medium">
           View More 
           <span className="text-white p-1 bg-[#017807]  rounded-full"> 
 <img src={ArrowRight} alt="arrow" />

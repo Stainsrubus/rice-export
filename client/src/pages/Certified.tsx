@@ -8,7 +8,7 @@ import AEO from "../../public/images/AEO-Photoroom 1.png"
 function Certified() {
     return (
         <section className="py-12">
-            <div className="flex justify-between items-center px-20">
+            <div className="lg:flex grid grid-cols-3 gap-5 justify-between  items-center lg:px-20 px-5">
                 <div><img src={ISO} alt="" className="w-[97px] h-[97px]" /></div>
                 <div><img src={aadhar} alt="" className="w-[122px] h-[122px]" /></div>
                 <div><img src={govt} alt="" className="w-[122px] h-[122px]"/></div>

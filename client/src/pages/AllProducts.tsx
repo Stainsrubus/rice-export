@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import NavBar from '../components/NavBar';
 import Footer from './Footer';
 import left from "../../public/svg/weui_arrow-filled.svg"
+import sideNav from "../../public/images/side-nav.png"
+import sideNavClose from "../../public/images/sideNav-close.png"
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
   interface Product {
@@ -510,17 +512,17 @@ const productData: Category[] = [
   {
     id: "CAT-004",
     name: "Special Variety",
-    image: "/api/placeholder/300/200",
+    image: "/images/varagu.jpg",
     subcategories: [
       {
         id: "SUB-007",
         name: "Special Grains",
-        image: "/api/placeholder/300/200",
+        image: "/images/varagu.jpg",
         products: [
           {
             id: "PROD-017",
             name: "Buckwheat",
-            image: "/api/placeholder/300/200",
+            image: "/images/varagu.jpg",
             description: "Buckwheat is a nutrient-dense, gluten-free pseudo-grain with a slightly earthy flavor. It is commonly used in making porridge, pancakes, and as a rice substitute in various dishes.",
             benefits: "High in protein, fiber, antioxidants, and essential minerals. It helps support heart health, regulate blood sugar, and improve digestion.",
             cookingMethod: "Rinse 1 cup Buckwheat, soak for 15-20 minutes. Cook with 2 cups water, bring to a boil, and simmer for 10-12 minutes until tender."
@@ -528,7 +530,7 @@ const productData: Category[] = [
           {
             id: "PROD-018",
             name: "Amaranthus (Raja Kirai Vithai)",
-            image: "/api/placeholder/300/200",
+            image: "/images/varagu.jpg",
             description: "Amaranthus is a highly nutritious leafy plant used as a grain. It has a mild, nutty flavor and is commonly used in porridges, soups, and salads.",
             benefits: "Rich in protein, fiber, iron, calcium, and antioxidants, supports immune function, promotes digestion, and helps improve bone health.",
             cookingMethod: "Rinse 1 cup Amaranthus, soak for 15-20 minutes. Cook with 2 cups water, bring to a boil, and cook for 15-20 minutes."
@@ -720,22 +722,49 @@ const productData: Category[] = [
 
     const navigate=useNavigate()
       const { index } = useParams<{ index: any }>();
-    
+      const dialogRef = useRef<HTMLDivElement | null>(null);
       const [searchparams] = useSearchParams()
       const _id = searchparams.get("_id")
 
       const firstCategory = productData[0];
-      const firstSubcategory = firstCategory?.subcategories[index]||firstCategory?.subcategories[0]
+      const firstSubcategory = firstCategory?.subcategories[0]
       const firstProduct = firstSubcategory?.products[0];
     const [selectedCategory, setSelectedCategory] = useState<string>(firstCategory?.id ?? '');
     const [expandedSubcategory, setExpandedSubcategory] = useState<string | null>(firstSubcategory?.id ?? null);
     const [selectedProduct, setSelectedProduct] = useState<Product | any>(firstProduct ?? null);
+   const [productDialogOpen,setProductDialogOpen]=useState(false);
+       useEffect(() => {
+        const category = productData.find(cat => cat.id === index) || firstCategory;
+        const subcategory = category?.subcategories[0];
+        setSelectedCategory(category?.id ?? '');
+        setExpandedSubcategory(subcategory?.id ?? null);
+        setSelectedProduct(subcategory?.products[0] ?? null);
+    }, [index]);
+
+    const handleImageClick = () => {
+      setProductDialogOpen(!productDialogOpen);
+  };
+
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+      if (dialogRef.current && !dialogRef.current.contains(event.target as Node)) {
+          setProductDialogOpen(false);
+      }
+  }, []);
+    useEffect(() => {
+      // Only add listener when dialog is open
+      if (productDialogOpen) {
+          document.addEventListener("mousedown", handleClickOutside);
+      }
+      
+      // Cleanup function to remove listener
+      return () => {
+          document.removeEventListener("mousedown", handleClickOutside);
+      };
+  }, [productDialogOpen, handleClickOutside]);
 
     useEffect(() =>{
         setSelectedCategory("CAT-001")
-        setExpandedSubcategory(_id)
-
-
+        setExpandedSubcategory(_id || 'SUB-001')
     },[index,_id])
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -783,18 +812,19 @@ const productData: Category[] = [
     // Reorder categories to make the selected category appear first
     const reorderedCategories = productData.filter(cat => cat.id === selectedCategory)
         .concat(productData.filter(cat => cat.id !== selectedCategory));
+
     return (
         <>
             <NavBar />
-            <div className="mt-24 mx-16 px-4 py-8">
+            <div className="lg:mt-24 mt-16 lg:mx-16 lg:px-4  py-8">
                 {/* Header */}
-                <header className="mb-8 flex items-center gap-3">
-                    <span onClick={()=>{navigate('/')}}  className='-mt-1'><img src={left}  alt="arrow" /></span>
-                    <h1 className="text-5xl font-anderson font-bold text-[#282C4B]">Products</h1>
+                <header className="mb-8 px-5 flex items-center gap-3">
+                    <span onClick={()=>{navigate('/')}}  className='-mt-1'><img src={left} className='h-8 lg:h-auto'  alt="arrow" /></span>
+                    <h1 className="lg:text-5xl text-3xl font-anderson font-bold text-[#282C4B]">Products</h1>
                 </header>
 
                 <div>
-                    <div className='flex  gap-12 py-3  pb-6 '>
+                    <div className='flex px-5 flex-wrap lg:gap-12 lg:py-3  lg:pb-6 '>
                         {reorderedCategories.map((category) => {
                             // Calculate total products in the category by summing products in all subcategories
                             const totalProducts = category.subcategories?.reduce((sum, subcategory) =>
@@ -807,7 +837,7 @@ const productData: Category[] = [
                                 <div 
                                     key={category.id} 
                                     onClick={() => handleCategoryClick(category.id)}
-                                    className={`p-2 cursor-pointer  flex text-base font-sans items-center rounded gap-3 ${isSelected ? 'bg-[#FA8232] w-64 text-white' : 'hover:bg-gray-50 text-[#5F6C72] '}`}
+                                    className={`p-2 cursor-pointer  flex lg:text-base text-sm font-sans items-center rounded gap-3  ${isSelected ? 'bg-[#FA8232] lg:w-64  text-white' : 'hover:bg-gray-50 text-[#5F6C72] '}`}
                                 >
                                     {category.name} 
                                     <span className={`rounded-full  border ${isSelected?'border-white text-[#FA8232] bg-white':'border-[#5F6C72]'}  flex items-center justify-center p-1 h-8 w-8`}>
@@ -818,10 +848,93 @@ const productData: Category[] = [
                         })}
                     </div>
                 </div>
+                <div className="lg:hidden relative">
+  <div className="flex items-center gap-5 relative z-40">
+    {/* Triggering Image */}
+    <div onClick={handleImageClick}>
+      <img
+        src={productDialogOpen ? sideNavClose : sideNav}
+        alt="Toggle Navigation"
+        className="h-20"
+      />
+    </div>
+    <p className="text-base text-[#191C1F]">
+      {subcategories.find((sub) => sub.id === expandedSubcategory)?.name} -{" "}
+      <span className="text-[#017807]">{selectedProduct.name}</span>
+    </p>
+  </div>
 
-                <div className="flex gap-8">
+  {productDialogOpen && (
+    <>
+      {/* Overlay */}
+      <div
+        className="fixed inset-0 z-30 bg-black bg-opacity-50"
+        onClick={() => setProductDialogOpen(false)} // Close dialog on outside click
+      ></div>
+
+      {/* Dialog */}
+      <div className="fixed inset-y-0 left-0 z-50 flex items-center justify-start pl-12">
+        <div
+          ref={dialogRef}
+          className="space-y-2 bg-white w-64 rounded z-40"
+        >
+          {subcategories.map((subcategory) => (
+            <div key={subcategory.id} className="border-b last:border-b-0">
+              <button
+                className={`w-full flex font-sans items-center p-4 justify-between font-medium  text-left ${
+                  expandedSubcategory === subcategory.id
+                    ? "text-black bg-[#F2F4F5]"
+                    : "text-[#5F6C72]"
+                }`}
+                onClick={() => handleSubcategoryClick(subcategory.id)}
+              >
+                <span>{subcategory.name}</span>
+                {expandedSubcategory === subcategory.id ? (
+                  <ChevronDown className="w-5 h-5" />
+                ) : (
+                  <ChevronRight className="w-5 h-5" />
+                )}
+              </button>
+
+              {/* Products Dropdown */}
+              {expandedSubcategory === subcategory.id && (
+                <div className="py-2 space-y-2">
+                  {subcategory.products.map((product) => (
+                    <button
+                      key={product.id}
+                      className={`w-full text-left py-2 rounded relative ${
+                        selectedProduct?.id === product.id
+                          ? "text-green-700"
+                          : "hover:bg-gray-50 text-[#5F6C72]"
+                      }`}
+                      onClick={() => {handleProductClick(product)
+                        setProductDialogOpen(false);
+                      }}
+                    >
+                      {/* Half circle indicator for selected product */}
+                      {selectedProduct?.id === product.id && (
+                        <span className="absolute left-0 top-1/2 transform -translate-y-1/2 w-2 h-4 bg-green-700 rounded-r-full"></span>
+                      )}
+                      <p className="pl-10">{product.name}</p>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  )}
+</div>
+
+
+
+
+                <div className="flex px-5 gap-8">
                     {/* Sidebar */}
-                    <div className="w-64 shrink-0">
+                 
+                    <div className="w-64 hidden lg:block shrink-0">
                         <div className="bg-white  rounded-lg shadow-lg py-2  border ">
                             {/* Category Tabs */}
 
@@ -884,19 +997,19 @@ const productData: Category[] = [
                     {selectedProduct && (
                         <div className="flex w-full cursor-default">
                             <div className="bg-white w-full">
-                                <div className="grid  grid-cols-1 gap-6">
+                                <div className="grid mt-8 lg:mt-0 grid-cols-1 gap-6">
                                     <div>
                                         <img
                                             src={selectedProduct.image}
                                             alt={selectedProduct.name}
-                                            className="w-full h-[400px] object-cover rounded-lg"
+                                            className="w-full lg:h-[400px] h-[275px] object-cover rounded-lg"
                                         />
                                     </div>
                                     <div className="space-y-5">
                                         <h2 className="text-3xl font-anderson font-bold text-[#282C4B]">
                                             {selectedProduct.name}
                                         </h2>
-                                        <p className="text-[#747582] text-xl font-ubuntu">
+                                        <p className="text-[#747582] lg:text-xl text-lg leading-loose  e font-ubuntu">
                                             {selectedProduct.description}
                                         </p>
 
@@ -905,7 +1018,7 @@ const productData: Category[] = [
                                                 <h3 className="text-2xl font-bold font-anderson text-[#F07922] mb-2">
                                                     Benefits
                                                 </h3>
-                                                <p className="text-[#747582] text-xl font-ubuntu">
+                                                <p className="text-[#747582] lg:text-xl text-lg leading-loose   font-ubuntu">
                                                     {selectedProduct.benefits}
                                                 </p>
                                             </div>
@@ -916,7 +1029,7 @@ const productData: Category[] = [
                                                 <h3 className="text-2xl font-bold font-anderson text-[#F07922] mb-2">
                                                     Cooking Method
                                                 </h3>
-                                                <p className="text-[#747582] text-xl font-ubuntu">
+                                                <p className="text-[#747582] lg:text-xl text-lg leading-loose  font-ubuntu">
                                                     {selectedProduct.cookingMethod}
                                                 </p>
                                             </div>
@@ -929,6 +1042,7 @@ const productData: Category[] = [
                 </div>
             </div>
             <Footer />
+           
         </>
     );
 };

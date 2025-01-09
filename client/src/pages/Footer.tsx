@@ -7,15 +7,15 @@ import call from "../../public/svg/call.svg"
 import location from "../../public/svg/location.svg"
 function Footer() {
   return (
-    <section className="mt-24 bg-[#017807]">
-<div className="px-24 py-20 flex justify-between">
-<div className="w-1/2">
+    <section className="lg:mt-24 mt-12 bg-[#017807]">
+<div className="lg:px-24 px-5 py-20 pb-28 lg:pb-0 flex flex-col lg:flex-row justify-between">
+<div className="lg:w-1/2 w-full">
 <a href="/">
             <div className="font-ubuntu text-2xl font-bold italic">
                <span className="text-white">VASUDHA</span> EXIM
             </div>
           </a>
-<p className="font-ubuntu text-xl leading-loose pt-10 text-white">
+<p className="font-ubuntu text-xl leading-loose lg:pt-10 pt-5 text-white">
 We specialize in exporting premium-quality rice globally, offering Basmati and non-Basmati varieties. Our rice is known for purity, freshness, and sustainability, ensuring satisfaction with every shipment through efficient and reliable service.
 </p>
 <div className="pt-10 flex gap-5">
@@ -38,7 +38,7 @@ We specialize in exporting premium-quality rice globally, offering Basmati and n
 
 </div>
 
-<div className="w-1/2 flex justify-end">
+<div className="lg:w-1/2 pt-10 lg:pt-0 w-full flex lg:justify-end">
   <div className="flex flex-col gap-6">
     <h1 className="text-white font-anderson font-bold text-2xl">Get In Touch</h1>
     
