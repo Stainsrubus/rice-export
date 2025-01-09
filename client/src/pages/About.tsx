@@ -23,7 +23,7 @@ excellence, we established Vasudha Exim to connect the richness of Indian rice t
 markets. 
 </p>
 <p className="leading-loose pt-10">
-With <span className="font-bold">over 10 years of experience</span> , we have honed our expertise to deliver India’s
+With <span className="font-bold">over 40+ years of experience</span> , we have honed our expertise to deliver India’s
 nest rice to the global stage. Our journey is a testament to hard work and excellence,
 combining traditional values with modern practices to ensure that every grain we export
 carries the rich heritage of Indian agriculture.

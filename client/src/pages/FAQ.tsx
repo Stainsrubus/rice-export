@@ -51,7 +51,7 @@ function FAQ() {
                     <div className="flex  flex-col   text-white justify-center items-center gap-5">
                         <img src={experience} alt="" />
                         <p className="font-poppins text-2xl font-semibold">
-                            10+
+                            40+
                         </p>
                         <p className="font-poppins font-semibold text-xl">
                             Year Of  Experience

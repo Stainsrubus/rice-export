@@ -22,13 +22,7 @@ function About2() {
     </p>
 </div>
 <div className="w-1/2">
-<p className="text-[#747582] w-5/6 font-ubuntu text-xl !leading-loose">At <span className="font-bold">Vasudha Exim Rice Export</span>, we stand out for our unwavering focus on quality,
-sustainability, and customer satisfaction. With <span className="font-bold">10+ years of experience</span>, we deliver premium
-rice varieties that meet global standards. Our diverse portfolio caters to unique tastes, from
-aromatic Basmati to traditional hand-pounded rice. We prioritize sustainable practices,
-supporting farmers and preserving the environment. Our customer-rst approach ensures
-tailored solutions, timely deliveries, and exceptional service. Trust us to bring the richness of
-Indian rice to your table with excellence.</p>
+<p className="text-[#747582] w-5/6 font-ubuntu text-xl !leading-loose">At <span className="font-bold">Vasudha Exim Rice Export</span>, we stand out with over 40+ years of experience in the rice export industry, guaranteeing unmatched quality, sustainability, and customer satisfaction. We specialize in white labeling, offering businesses customized rice products under their own brand. Through franchising opportunities, we empower you to share the rich heritage of Indian rice with every corner of the globe. We can make seamless arrangements to ship your products from the port directly to your required shop, ensuring timely and reliable deliveries.</p>
 </div>
 </div>
 <div className="flex gap-20 pb-10">
