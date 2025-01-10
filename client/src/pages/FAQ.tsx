@@ -64,7 +64,7 @@ function FAQ() {
     },
   ];
 
-  const handleToggle = (index) => {
+  const handleToggle = (index:any) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
