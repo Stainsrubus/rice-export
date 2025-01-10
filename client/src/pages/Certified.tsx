@@ -9,12 +9,12 @@ function Certified() {
     return (
         <section className="py-12">
             <div className="lg:flex grid grid-cols-3 gap-5 justify-between  items-center lg:px-20 px-5">
-                <div><img src={ISO} alt="" className="w-[97px] h-[97px]" /></div>
-                <div><img src={aadhar} alt="" className="w-[122px] h-[122px]" /></div>
-                <div><img src={govt} alt="" className="w-[122px] h-[122px]"/></div>
-                <div><img src={AEO} alt="" className="w-[178px] h-[86px]"/></div>
-                <div><img src={coffee} alt="" className="w-[102px] h-[102px]" /></div>
-                <div><img src={fssai} alt=""  className="w-[191px] h-[72px]"/></div>
+                <div><img src={ISO} alt="" loading="lazy" className="w-[97px] h-[97px]" /></div>
+                <div><img src={aadhar} alt="" loading="lazy" className="w-[122px] h-[122px]" /></div>
+                <div><img src={govt} alt="" loading="lazy" className="w-[122px] h-[122px]"/></div>
+                <div><img src={AEO} alt="" loading="lazy" className="w-[178px] h-[86px]"/></div>
+                <div><img src={coffee} alt="" loading="lazy" className="w-[102px] h-[102px]" /></div>
+                <div><img src={fssai} alt="" loading="lazy"  className="w-[191px] h-[72px]"/></div>
             </div>
         </section>
     )

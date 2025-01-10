@@ -390,7 +390,7 @@ function Products() {
          {riceSubcategories.map((subcategory:any,index:any) => (
   <div key={subcategory.id} className="hover:shadow-lg lg:h-[500px] lg:w-[410px] transition-shadow cursor-pointer">
     <div className="flex justify-center">
-      <img src={subcategory.image} alt={`${subcategory.name} image`} className="  object-cover lg:w-[410px] lg:h-[350px] h-[145px] w-[171px]" />
+      <img loading="lazy" src={subcategory.image} alt={`${subcategory.name} image`} className="  object-cover lg:w-[410px] lg:h-[350px] h-[145px] w-[171px]" />
     </div>
     <div className="pt-6 py-6 text-center">
       <h3 className="font-bold lg:text-4xl text-lg text-[#282C4B] font-anderson mb-2">{subcategory.name}</h3>

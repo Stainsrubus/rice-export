@@ -13,9 +13,9 @@ function Infra() {
         </p>
     </div>
     <div className="flex md:flex-row flex-wrap gap-10 lg:gap-0 flex-col lg:pt-20 pt-10 items-center md:justify-evenly">
-<img src={infra1} alt="infra" className="md:h-[350px] md:w-[400px] h-[300px] w-[380px]" />
-<img src={infra2} alt="infra" className="md:h-[350px] md:w-[400px] h-[300px] w-[380px]" />
-<img src={infra3} alt="infra" className="md:h-[350px] md:w-[400px] h-[300px] w-[380px]"/>
+<img src={infra1} alt="infra" loading="lazy" className="md:h-[350px] md:w-[400px] h-[300px] w-[380px]" />
+<img src={infra2} alt="infra" loading="lazy" className="md:h-[350px] md:w-[400px] h-[300px] w-[380px]" />
+<img src={infra3} alt="infra" loading="lazy" className="md:h-[350px] md:w-[400px] h-[300px] w-[380px]"/>
     </div>
   </section>
   )

@@ -42,11 +42,11 @@ carries the rich heritage of Indian agriculture.
 </div>
     </div>
 <div className="absolute lg:block hidden bottom-0 right-0 ">
-<img  src={bowl}  alt="" className="w-[150px] h-[110px]" />
+<img  src={bowl} loading="lazy"  alt="" className="w-[150px] h-[110px]" />
 
 </div>
 <div className="absolute lg:hidden block bottom-5 right-0 ">
-<img  src={bowl_sm}  alt="" className="w-[100px] h-[94px]" />
+<img  src={bowl_sm} loading="lazy"  alt="" className="w-[100px] h-[94px]" />
 
 </div>
  </section>

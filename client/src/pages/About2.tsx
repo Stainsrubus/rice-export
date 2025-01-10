@@ -11,7 +11,7 @@ function About2() {
    <section className="bg-[#F6F6F6CC]   ">
     <div className="relative lg:px-20 px-5 py-10 lg:py-20">
 <div className="absolute lg:block hidden top-0 left-0">
-    <img src={paddyleft} alt="" className="  w-1/4" />
+    <img src={paddyleft} loading="lazy" alt="" className="  w-1/4" />
 </div>
 
 <div className="flex flex-col lg:flex-row py-4 lg:pb-20 pb-5">
@@ -30,7 +30,7 @@ function About2() {
 <div className="lg:flex grid grid-cols-2  gap-5 lg:gap-20 pb-10">
 <div className="flex flex-col gap-5">
 <div className="bg-[#017807] border-green-50/90 border-[7px] w-fit rounded-full">
-  <img src={briefcase} className="p-4 h-14 w-14 lg:w-auto lg:h-auto" alt="" />
+  <img src={briefcase} loading="lazy" className="p-4 h-14 w-14 lg:w-auto lg:h-auto" alt="" />
 </div>
 <div>
 <h1 className="text-[#242527] lg:pb-5 pb-2 font-anderson font-bold  lg:text-2xl text-base">
@@ -44,7 +44,7 @@ With over 10 years of expertise, we ensure quality and reliability in exports
 
 <div className="flex flex-col gap-5">
 <div className="bg-[#017807] border-green-50/90 border-[7px] w-fit rounded-full">
-  <img src={price} className="p-4 h-14 lg:h-auto" alt="" />
+  <img src={price} loading="lazy" className="p-4 h-14 lg:h-auto" alt="" />
 </div>
 <div>
 <h1 className="text-[#242527] lg:pb-5 pb-2 font-anderson font-bold  lg:text-2xl text-base">
@@ -57,7 +57,7 @@ Oering aordable pricing without compromising on product quality.
 </div>
 <div className="flex flex-col gap-5">
 <div className="bg-[#017807] border-green-50/90 border-[7px] w-fit rounded-full">
-  <img src={clock} className="p-3 h-14 lg:h-auto" alt="" />
+  <img src={clock} loading="lazy" className="p-3 h-14 lg:h-auto" alt="" />
 </div>
 <div>
 <h1 className="text-[#242527] lg:pb-5 pb-2 font-anderson font-bold  lg:text-2xl text-base">
@@ -70,7 +70,7 @@ Ensuring punctual delivery to meet client expectations globally.
 </div>
 <div className="flex flex-col gap-5">
 <div className="bg-[#017807] border-green-50/90 border-[7px] w-fit rounded-full">
-  <img src={shield} className="p-3 h-14 lg:h-auto" alt="" />
+  <img src={shield} loading="lazy" className="p-3 h-14 lg:h-auto" alt="" />
 </div>
 <div>
 <h1 className="text-[#242527] lg:pb-5 pb-2 font-anderson font-bold text-base lg:text-2xl">
@@ -84,10 +84,10 @@ Sourcing premium quality rice for exceptional taste and texture.
 </div>
 
 <div className="absolute lg:block hidden w-[13%] bottom-0 right-0">
-    <img src={paddyright} alt="" className=""/>
+    <img src={paddyright} loading="lazy" alt="" className=""/>
 </div>
 <div className="absolute block lg:hidden w-[40%] bottom-0 right-0">
-    <img src={paddySm} alt="" className=""/>
+    <img src={paddySm} loading="lazy" alt="" className=""/>
 </div>
 </div>
    </section>

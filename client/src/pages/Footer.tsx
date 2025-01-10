@@ -8,7 +8,7 @@ import location from "../../public/svg/location.svg"
 function Footer() {
   return (
     <section className="lg:mt-24 mt-12 bg-[#017807]">
-<div className="lg:px-24 px-5 py-20 pb-28 lg:pb-0 flex flex-col lg:flex-row justify-between">
+<div className="lg:px-24 px-5 py-20 pb-28 lg:pb-10 flex flex-col lg:flex-row justify-between">
 <div className="lg:w-1/2 w-full">
 <a href="/">
             <div className="font-ubuntu text-2xl font-bold italic">
@@ -20,19 +20,19 @@ We specialize in exporting premium-quality rice globally, offering Basmati and n
 </p>
 <div className="pt-10 flex gap-5">
   <a href="#" title="Google" className="rounded-full bg-[#D9D9D969]">
-    <img src={google} alt="Google" className="p-3" />
+    <img loading="lazy" src={google} alt="Google" className="p-3" />
   </a>
   
   <a href="#" title="Twitter" className="rounded-full bg-[#D9D9D969]">
-    <img src={twitter} alt="Twitter" className="p-3" />
+    <img loading="lazy" src={twitter} alt="Twitter" className="p-3" />
   </a>
   
   <a href="#" title="Instagram" className="rounded-full bg-[#D9D9D969]">
-    <img src={insta} alt="Instagram" className="p-3" />
+    <img loading="lazy" src={insta} alt="Instagram" className="p-3" />
   </a>
   
   <a href="#" title="LinkedIn" className="rounded-full bg-[#D9D9D969]">
-    <img src={linkedIn} alt="LinkedIn" className="p-3" />
+    <img loading="lazy" src={linkedIn} alt="LinkedIn" className="p-3" />
   </a>
 </div>
 
@@ -43,7 +43,7 @@ We specialize in exporting premium-quality rice globally, offering Basmati and n
     <h1 className="text-white font-anderson font-bold text-2xl">Get In Touch</h1>
     
     <div className="flex gap-4">
-      <img src={location} alt="Location Icon" />
+      <img loading="lazy" src={location} alt="Location Icon" />
       <a 
         // href="https://www.google.com/maps?q=5-222-7,+Main+road,+Arunthathiyar+Kudiyiruppu,+Kaluneerkulam,+Tenkasi+Alangulam,+Tirunelveli+District,+Tamil+Nadu+-+627851" 
         target="_blank" 
@@ -59,7 +59,7 @@ We specialize in exporting premium-quality rice globally, offering Basmati and n
     </div>
     
     <div className="flex gap-4">
-      <img src={call} alt="Call Icon" />
+      <img loading="lazy" src={call} alt="Call Icon" />
       <a 
         href="tel:+919443495558" 
         className="font-sans text-xl text-[#EDECECE3]"
@@ -69,7 +69,7 @@ We specialize in exporting premium-quality rice globally, offering Basmati and n
     </div>
     
     <div className="flex gap-4">
-      <img src={mail} alt="Mail Icon" />
+      <img loading="lazy" src={mail} alt="Mail Icon" />
       <a 
         href="mailto:vasudhaexim1@gmail.com" 
         className="font-sans text-xl text-[#EDECECE3]"

@@ -10,7 +10,7 @@ function Home() {
  <section className="mt-20 lg:pt-32 pt-5 pb-5 flex relative  items-center lg:px-20 px-5">
     <div className="lg:w-1/2 w-full  flex flex-col justify-center lg:items-start items-center ">
 <div className="flex items-center justify-center lg:justify-start">
-<img src={verify} alt=""  className="w-8 h-8" />
+<img src={verify} alt="" loading="lazy"  className="w-8 h-8" />
 <p className="text-[#F17216]  text-base font-ubuntu">
 Best Rice Export Company
 </p>
@@ -23,6 +23,7 @@ Best Rice Export Company
       <img 
         src={line} 
         alt="line" 
+        loading="lazy"
         className="absolute top-full left-1/2 transform -translate-x-1/2 lg:-mt-3 -mt-2"
       />
     </span> 
@@ -43,27 +44,27 @@ global tables.
         Get Started
     </button>
     <button className="flex py-6 px-8 text-[#282C4B] font-medium text-lg items-center gap-2 justify-center ">
-        <img src={videoIcon} alt="" />
+        <img src={videoIcon} alt="" loading="lazy" />
     Watch Video
     </button>
 </div>
     </div>
 
     <div className=" lg:absolute  hidden top-[20%] left-[48%]">
-            <img src={arrow} alt="" />
+            <img src={arrow} loading="lazy" alt="" />
         </div>
 
     <div className="lg:w-1/2 hidden lg:block   relative px-6">
      <div className="">
-        <img src={hero} alt="" />
+        <img src={hero} loading="lazy" alt="" />
         </div>
     </div>
 
     <div className="absolute bottom-0 left-0 z-10">
-        <img src={left} alt="" className="w-[100vw] h-[100%]" />
+        <img src={left} alt="" loading="lazy" className="w-[100vw] h-[100%]" />
     </div>
     <div className="absolute bottom-0 right-0 z-5">
-        <img src={right} alt="" className="w-[75vw] h-[100%]" />
+        <img src={right} alt="" loading="lazy" className="w-[75vw] h-[100%]" />
     </div>
  </section>
   )
