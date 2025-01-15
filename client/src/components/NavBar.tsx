@@ -119,7 +119,6 @@ function NavBar() {
             </div>
 
             {/* Drawer - Visible when open on small screens */}
-           {/* Drawer - Visible when open on small screens */}
 <div 
     className={`fixed inset-y-0 right-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out ${
         isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
@@ -135,37 +134,42 @@ function NavBar() {
             <X size={20} />
         </button>
 
-        <ul className="flex w-full flex-col gap-6 text-[#747582] text-base">
+        <ul className="flex w-full flex-col gap-4 text-[#747582] text-base">
     <li className="w-full ">
         <a 
-            className="w-full block py-2 px-2 rounded-xl border-green-600 border"
+            className="w-full block  px-2  "
             href="/#home" 
             onClick={createNavClickHandler("home")}
         >
             Home
         </a>
     </li>
+    <hr />
     <li className="w-full">
         <a 
-            className="w-full block py-2 px-2 rounded-xl border-green-600 border"
+            className="w-full block  px-2  "
             href="/#about" 
             onClick={createNavClickHandler("about")}
         >
             About Us
         </a>
     </li>
+    <hr />
+
     <li className="w-full">
         <a 
-            className="w-full block py-2 px-2 rounded-xl border-green-600 border"
+            className="w-full block px-2  "
             href="/#product" 
             onClick={createNavClickHandler("product")}
         >
             Product
         </a>
     </li>
+    <hr />
+
     <li className="w-full">
         <a 
-            className="w-full block py-2 px-2 rounded-xl border-green-600 border"
+            className="w-full block  px-2  "
             href="/#contact" 
             onClick={createNavClickHandler("contact")}
         >
