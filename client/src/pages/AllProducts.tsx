@@ -742,7 +742,6 @@ export const productData: Category[] = [
         setSelectedCategory( locationState?.grandParentId ?? category?.id ?? '');
         setExpandedSubcategory( locationState?.parentId ?? subcategory?.id ?? null);
         setSelectedProduct(selectedProduct ?? null);
-        console.log(category,subcategory,selectedProduct,locationState)
 
     }, [index,locationState?.categoryId,locationState?.subCategoryId,locationState?.productId]);
 
@@ -776,7 +775,6 @@ export const productData: Category[] = [
       }, []);
 
     const getProductsByCategoryId = (categoryId: string) => {
-      console.log(productData,'productData')
         const category = productData.find(cat => cat.id === categoryId);
       
         
@@ -788,7 +786,6 @@ export const productData: Category[] = [
         // Collect all products from the subcategories of the found category
         return category.subcategories.flatMap(subcategory => subcategory.products);
       };
-      console.log(index,'>>>>index')
       const products = getProductsByCategoryId(locationState?.parantId ?? index);
 
       if (products.length > 0) {
