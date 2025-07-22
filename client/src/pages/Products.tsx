@@ -363,7 +363,7 @@ function Products() {
   const riceSubcategories = riceCategory?.subcategories || [];
 
   const handleKnowMoreClick = (id: string,_id:any) => {
-    navigate(`/product/${id}?_id=${_id}`);
+    navigate(`/product/${id}?_id=${_id}`, { state: { product : { categoryId: 'CAT-001', subCategoryId: _id, productId: 'PROD-001' } } });
   };
   const handleViewMoreClick = () => {
     if (riceSubcategories.length > 0) {

@@ -5,7 +5,7 @@ import Footer from './Footer';
 import left from "../../public/svg/weui_arrow-filled.svg"
 import sideNav from "../../public/images/side-nav.png"
 import sideNavClose from "../../public/images/sideNav-close.png"
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
   interface Product {
     id: string;
@@ -24,7 +24,7 @@ interface Subcategory {
     products: Product[];
 }
 
-interface Category {
+export interface Category {
     id: string;
     name: string;
     image: string;
@@ -32,7 +32,7 @@ interface Category {
 }
 
 // Assuming productData is imported from somewhere
-const productData: Category[] = [
+export const productData: Category[] = [
     {
         "id": "CAT-001",
         "name": "Rice Varieties",
@@ -725,6 +725,8 @@ const productData: Category[] = [
       const dialogRef = useRef<HTMLDivElement | null>(null);
       const [searchparams] = useSearchParams()
       const _id = searchparams.get("_id")
+      const location = useLocation()
+      const locationState = location.state?.product
 
       const firstCategory = productData[0];
       const firstSubcategory = firstCategory?.subcategories[0]
@@ -734,12 +736,15 @@ const productData: Category[] = [
     const [selectedProduct, setSelectedProduct] = useState<Product | any>(firstProduct ?? null);
    const [productDialogOpen,setProductDialogOpen]=useState(false);
        useEffect(() => {
-        const category = productData.find(cat => cat.id === index) || firstCategory;
-        const subcategory = category?.subcategories[0];
-        setSelectedCategory(category?.id ?? '');
-        setExpandedSubcategory(subcategory?.id ?? null);
-        setSelectedProduct(subcategory?.products[0] ?? null);
-    }, [index]);
+        const category = productData.find(cat => cat.id === locationState?.categoryId) || firstCategory;
+        const subcategory = category?.subcategories.find(sub => sub.id === locationState?.subCategoryId) || category?.subcategories[0];
+        const selectedProduct = subcategory?.products.find(prod => prod.id === locationState?.productId) || subcategory?.products[0];
+        setSelectedCategory( locationState?.grandParentId ?? category?.id ?? '');
+        setExpandedSubcategory( locationState?.parentId ?? subcategory?.id ?? null);
+        setSelectedProduct(selectedProduct ?? null);
+        console.log(category,subcategory,selectedProduct,locationState)
+
+    }, [index,locationState?.categoryId,locationState?.subCategoryId,locationState?.productId]);
 
     const handleImageClick = () => {
       setProductDialogOpen(!productDialogOpen);
@@ -763,14 +768,15 @@ const productData: Category[] = [
   }, [productDialogOpen, handleClickOutside]);
 
     useEffect(() =>{
-        setSelectedCategory("CAT-001")
-        setExpandedSubcategory(_id || 'SUB-001')
+        // setSelectedCategory(locationState?.grandParentId ?? "CAT-001")
+        // setExpandedSubcategory(locationState?.parentId ?? (_id || 'SUB-001'))
     },[index,_id])
     useEffect(() => {
         window.scrollTo(0, 0);
       }, []);
 
     const getProductsByCategoryId = (categoryId: string) => {
+      console.log(productData,'productData')
         const category = productData.find(cat => cat.id === categoryId);
       
         
@@ -782,8 +788,8 @@ const productData: Category[] = [
         // Collect all products from the subcategories of the found category
         return category.subcategories.flatMap(subcategory => subcategory.products);
       };
-      
-      const products = getProductsByCategoryId(index);
+      console.log(index,'>>>>index')
+      const products = getProductsByCategoryId(locationState?.parantId ?? index);
 
       if (products.length > 0) {
         console.log("Products in the category:", products);
@@ -819,7 +825,7 @@ const productData: Category[] = [
             <div className="lg:mt-24 mt-16 lg:mx-16 lg:px-4  py-8">
                 {/* Header */}
                 <header className="mb-8 px-5 flex items-center gap-3">
-                    <span onClick={()=>{navigate('/')}}  className='-mt-1'><img src={left} className='h-8 lg:h-auto'  alt="arrow" /></span>
+                    <span onClick={()=>{navigate('/')}}  className='-mt-1'><img src={left} className='h-8 lg:h-auto cursor-pointer'  alt="arrow" /></span>
                     <h1 className="lg:text-5xl text-3xl font-anderson font-bold text-[#282C4B]">Products</h1>
                 </header>
 

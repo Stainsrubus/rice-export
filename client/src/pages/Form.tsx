@@ -3,17 +3,22 @@ import { _axios } from "../lib/_axios";
 import { toast } from "react-toastify";
 import { ImSpinner2 } from "react-icons/im";
 import { useMutation } from "@tanstack/react-query";
+import emailjs from "@emailjs/browser";
 
 type FormDataType = {
   email: string;
   phone: string;
   message: string;
+  name: string;
+  addressOfCompany: string;
 };
 
 type FormErrorsType = {
   email?: string;
   phone?: string;
   message?: string;
+  name?: string;
+  addressOfCompany?: string;
 };
 
 type ApiResponse = {
@@ -32,7 +37,9 @@ function Form() {
   const [formData, setFormData] = useState<FormDataType>({
     email: "",
     phone: "",
+    name: "",
     message: "",
+    addressOfCompany: "",
   });
 
   const [errors, setErrors] = useState<FormErrorsType>({});
@@ -50,6 +57,14 @@ function Form() {
       newErrors.phone = "Phone number is required";
     } else if (!/^\d{10}$/.test(formData.phone)) {
       newErrors.phone = "Phone number must be 10 digits";
+    }
+
+    if (!formData.name) {
+      newErrors.name = "Name is required";
+    }
+
+    if (!formData.addressOfCompany) {
+      newErrors.addressOfCompany = "Address of company is required";
     }
 
     if (!formData.message) {
@@ -72,16 +87,18 @@ function Form() {
   };
 
   const { mutate, isPending, isError } = useMutation({
-    mutationFn: async (data: FormDataType): Promise<ApiResponse> => {
-      const response = await _axios.post('/send-email', data);
-      return response.data;
+    mutationFn: async (data: FormDataType) => {      
+      const response = await sendEmail(data);
+      return response;
     },
-    onSuccess: (data) => {
-      toast.success(data.message || "Form submitted successfully!");
+    onSuccess: () => {
+      toast.success( "Form submitted successfully!");
       setFormData({
         email: "",
         phone: "",
         message: "",
+        name: "",
+        addressOfCompany: "",
       });
       setErrors({});
     },
@@ -104,11 +121,43 @@ function Form() {
     mutate(formData); 
   };
 
+  const sendEmail = async (data: FormDataType) => {
+    const templateParams = {
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      addressOfCompany: data.addressOfCompany,
+      message: data.message,
+    };
+
+    const keys = {
+      serviceId: "service_u7l6ruk",
+      templateId: "template_y77eig8",
+      userId: "49IRQ67xvEUiZTA1U"
+    };
+
+    try {
+
+       await emailjs.send(
+        keys.serviceId,
+        keys.templateId,
+        templateParams,
+        keys.userId
+      );
+
+    } catch (error: any) {
+      console.error("❌ Email send failed:", error.text);
+      throw new Error("Failed to submit the form. Please try again.");
+    }
+  };
+
+
+
   return (
     <section className="lg:px-20 md:py-24 py-10 px-5 flex justify-center items-center">
       <div className="bg-[#F3F4F3] lg:w-5/6 w-full py-8 lg:px-20 px-5 rounded-lg shadow-md">
         <h1 className="lg:text-4xl text-3xl text-center font-bold font-anderson text-[#282C4B] mb-8">
-          Inquiry Form
+          Enquiry Form
         </h1>
 
         <form className="space-y-6" onSubmit={handleSubmit}>
@@ -153,6 +202,44 @@ function Form() {
               />
               {errors.phone && (
                 <p className="text-red-500 text-sm mt-2">{errors.phone}</p>
+              )}
+            </div>
+            <div>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                disabled={isPending}
+                className={`w-full px-4 py-4 border ${
+                  errors.name ? "border-red-500" : "border-[#B0B0B0]"
+                } rounded-xl font-ubuntu focus:outline-none ${
+                  isPending ? "bg-gray-100" : ""
+                }`}
+                placeholder="Your Name"
+              />
+              {errors.name && (
+                <p className="text-red-500 text-sm mt-2">{errors.name}</p>
+              )}
+            </div>
+            <div>
+              <input
+                type="text"
+                id="addressOfCompany"
+                name="addressOfCompany"
+                value={formData.addressOfCompany}
+                onChange={handleChange}
+                disabled={isPending}
+                className={`w-full px-4 py-4 border ${
+                  errors.addressOfCompany ? "border-red-500" : "border-[#B0B0B0]"
+                } rounded-xl font-ubuntu focus:outline-none ${
+                  isPending ? "bg-gray-100" : ""
+                }`}
+                placeholder="Address of Company or Person"
+              />
+              {errors.addressOfCompany && (
+                <p className="text-red-500 text-sm mt-2">{errors.addressOfCompany}</p>
               )}
             </div>
           </div>
