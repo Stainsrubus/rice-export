@@ -9,9 +9,6 @@ function About() {
     <span>
     Our Story
     </span>
-<span>
-Who we are
-</span>
 </h1>
     </div>
     <div className="lg:w-1/2 w-full flex lg:flex-row flex-col  justify-center items-center">
@@ -22,20 +19,17 @@ Who we are
     <span>
     Our Story
     </span>
-<span>
-Who we are
-</span>
 </h1>
 <div className="text-[#747582] lg:pt-10  flex flex-col font-ubuntu lg:text-xl text-sm">
 <p className="leading-loose">
-At <span className="font-bold">Vasudha Exim Rice Export</span>, our journey began with a shared vision of two passionate
+At <span className="font-bold">Vasudha Exim</span>, our journey began with a shared vision of two passionate
 entrepreneurs, <span className="font-bold">Gowthaman</span> and <span className="font-bold">Kalin Suresh</span>. United by a deep-rooted commitment to
 excellence, we established Vasudha Exim to connect the richness of Indian rice to global
 markets. 
 </p>
 <p className="leading-loose lg:pt-10 pt-5 pb-20 lg:pb-0">
-With <span className="font-bold">over 40+ years of experience</span> , we have honed our expertise to deliver India’s
-nest rice to the global stage. Our journey is a testament to hard work and excellence,
+With <span className="font-bold">over 40 years of experience</span> , we have honed our expertise to deliver India’s
+best rice to the global stage. Our journey is a testament to hard work and excellence,
 combining traditional values with modern practices to ensure that every grain we export
 carries the rich heritage of Indian agriculture.
 </p>

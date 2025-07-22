@@ -17,14 +17,14 @@ function About2() {
 <div className="flex flex-col lg:flex-row py-4 lg:pb-20 pb-5">
 <div className="text-[#282C4B]  lg:w-1/2 font-anderson gap-6 font-bold lg:text-6xl text-3xl flex flex-col">
     <p>
-    What’s Makes
+    What Makes
     </p>
     <p>
     Us Different
     </p>
 </div>
 <div className="lg:w-1/2 w-full pt-5 lg:pt-0">
-<p className="text-[#747582] w-5/6 font-ubuntu lg:text-xl text-sm !leading-loose">At <span className="font-bold">Vasudha Exim Rice Export</span>, we stand out with over 40+ years of experience in the rice export industry, guaranteeing unmatched quality, sustainability, and customer satisfaction. We specialize in white labeling, offering businesses customized rice products under their own brand. Through franchising opportunities, we empower you to share the rich heritage of Indian rice with every corner of the globe. We can make seamless arrangements to ship your products from the port directly to your required shop, ensuring timely and reliable deliveries.</p>
+<p className="text-[#747582] w-5/6 font-ubuntu lg:text-xl text-sm !leading-loose">At <span className="font-bold">Vasudha Exim</span>, we stand out with over 40 years of experience in the rice export industry, guaranteeing unmatched quality, sustainability, and customer satisfaction. We specialize in white labeling, offering businesses customized rice products under their own brand. Through franchising opportunities, we empower you to share the rich heritage of Indian rice with every corner of the globe. We can make seamless arrangements to ship your products from the port directly to your required shop, ensuring timely and reliable deliveries.</p>
 </div>
 </div>
 <div className="lg:flex grid grid-cols-2  gap-5 lg:gap-20 pb-10">
@@ -34,7 +34,7 @@ function About2() {
 </div>
 <div>
 <h1 className="text-[#242527] lg:pb-5 pb-2 font-anderson font-bold  lg:text-2xl text-base">
-Experienced
+Experience
 </h1>
 <p className="text-[#747582] lg:text-lg text-sm font-medium !leading-relaxed">
 With over 10 years of expertise, we ensure quality and reliability in exports
@@ -51,7 +51,7 @@ With over 10 years of expertise, we ensure quality and reliability in exports
 Competitive price
 </h1>
 <p className="text-[#747582] lg:text-lg text-sm font-medium !leading-relaxed">
-Oering aordable pricing without compromising on product quality.
+Offering affordable pricing without compromising on product quality.
 </p>
 </div>
 </div>

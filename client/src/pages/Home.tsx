@@ -7,7 +7,7 @@ import left from "../../public/images/hero-left.png"
 import right from "../../public/images/hero-right.png"
 function Home() {
   return (
- <section className="mt-20 lg:pt-32 pt-5 pb-5 flex relative  items-center lg:px-20 px-5">
+ <section className="sm:mt-20 lg:pt-32 pt-5 pb-5 flex relative  items-center lg:px-20 px-5">
     <div className="lg:w-1/2 w-full  flex flex-col justify-center lg:items-start items-center ">
 <div className="flex items-center justify-center lg:justify-start">
 <img src={verify} alt="" loading="lazy"  className="w-8 h-8" />
@@ -27,13 +27,13 @@ Best Rice Export Company
         className="absolute top-full left-1/2 transform -translate-x-1/2 lg:-mt-3 -mt-2"
       />
     </span> 
-    <span>  </span>  - quality rice worldwide.
+    <span>  </span>   quality rice worldwide.
   </h1>
 </div>
 
 <div className="lg:w-5/6 w-full flex justify-center lg:justify-start">
 <p className="font-ubuntu text-center lg:text-left lg:text-xl text-sm !leading-loose text-[#747582]">
-At Vasudha Exim Rice Export, we deliver premium Indian rice with a legacy of over 40+ years.
+At Vasudha Exim Rice Export, we deliver premium Indian rice with a legacy of over 40 years.
 Rooted in tradition and driven by quality, we connect the richness of Indian agriculture to
 global tables.
  </p>

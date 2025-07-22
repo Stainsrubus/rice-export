@@ -54,7 +54,8 @@ We specialize in exporting premium-quality rice globally, offering Basmati and n
         Arunthathiyar Kudiyiruppu,<br />
         Kaluneerkulam, Tenkasi Alangulam, <br />
         Tirunelveli District,<br />
-        Tamil Nadu - 627851
+        Tamil Nadu - 627851,<br />
+        India
       </a>
     </div>
     
@@ -64,7 +65,8 @@ We specialize in exporting premium-quality rice globally, offering Basmati and n
         href="tel:+919443495558" 
         className="font-sans text-xl text-[#EDECECE3]"
       >
-        +91 9443495558
+        +91 94432 95491 <br />
+        +91 63816 41973
       </a>
     </div>
     

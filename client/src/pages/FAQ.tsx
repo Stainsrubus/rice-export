@@ -17,7 +17,7 @@ function Counter() {
       <div className="flex flex-col text-white justify-center items-center gap-5">
         <img loading="lazy" src={experience} alt="" className="md:h-12" />
         <p className="font-poppins lg:text-2xl text-2xl md:text-xl font-semibold">40+</p>
-        <p className="font-poppins font-semibold md:text-base lg:text-xl text-xl">Year Of Experience</p>
+        <p className="font-poppins font-semibold md:text-base lg:text-xl text-xl">Years Of Experience</p>
       </div>
 
       <div className="flex flex-col text-white justify-center items-center gap-5">
@@ -29,13 +29,13 @@ function Counter() {
       <div className="flex flex-col text-white justify-center items-center gap-5">
         <img loading="lazy" src={review} alt="" className="md:h-12" />
         <p className="font-poppins lg:text-2xl text-2xl md:text-xl font-semibold">50+</p>
-        <p className="font-poppins font-semibold md:text-base lg:text-xl text-xl">Client Satisfaction</p>
+        <p className="font-poppins font-semibold md:text-base lg:text-xl text-xl">Satisfied Clients</p>
       </div>
 
       <div className="flex flex-col text-white justify-center items-center gap-5">
         <img loading="lazy" src={Export} alt="" className="md:h-12" />
         <p className="font-poppins lg:text-2xl text-2xl md:text-xl font-semibold">25+</p>
-        <p className="font-poppins font-semibold md:text-base lg:text-xl text-xl">Country Exported</p>
+        <p className="font-poppins font-semibold md:text-base lg:text-xl text-xl">Countries Exported</p>
       </div>
     </section>
   );
@@ -52,7 +52,7 @@ function FAQ() {
     },
     {
       question: "Do you offer international shipping?",
-      answer: "Yes, we offer international shipping to most countries. Shipping fees and times vary depending on the destination.",
+      answer: "Yes, we offer international shipping to most countries. Shipping fee and time vary depending on the destination.",
     },
     {
       question: "How can I track my order?",
