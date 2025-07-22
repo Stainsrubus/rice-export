@@ -21,9 +21,6 @@ type FormErrorsType = {
   addressOfCompany?: string;
 };
 
-type ApiResponse = {
-  message: string;
-};
 
 type ApiError = {
   response?: {
