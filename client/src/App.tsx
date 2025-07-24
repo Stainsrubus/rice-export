@@ -28,7 +28,7 @@ function App() {
                 <section id="home">
                   <Home />
                 </section>
-                <Certified />
+                {/* <Certified /> */}
                 <section id="about">
                   <About />
                 </section>
