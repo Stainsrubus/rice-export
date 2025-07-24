@@ -22,3 +22,11 @@ body{
   -webkit-text-stroke: 1px #B8F4AD80;
   /* text-stroke: 1px #B8F4AD80;          */
 }
+
+.hide-scrollbar {
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}

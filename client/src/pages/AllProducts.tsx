@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import NavBar from '../components/NavBar';
 import Footer from './Footer';
 import left from "../../public/svg/weui_arrow-filled.svg"
 import sideNav from "../../public/images/side-nav.png"
@@ -818,8 +817,7 @@ export const productData: Category[] = [
 
     return (
         <>
-            <NavBar />
-            <div className="lg:mt-24 mt-16 lg:mx-16 lg:px-4  py-8">
+            <div className="lg:mt-24 sm:mt-20  lg:mx-16 lg:px-4  py-8">
                 {/* Header */}
                 <header className="mb-8 px-5 flex items-center gap-3">
                     <span onClick={()=>{navigate('/')}}  className='-mt-1'><img src={left} className='h-8 lg:h-auto cursor-pointer'  alt="arrow" /></span>
