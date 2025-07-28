@@ -122,9 +122,17 @@ function NavBar() {
         navigate(`/product/${product.subCategoryId}`, { state: { product } });
     }
 
+    const handleClickOutside = () => {
+            setSearchTerm('');
+            setFilteredProducts([]);
+    };
+    
     useEffect(() => {
-        // setSearchTerm(location.state?.product?.name || '');
-        inputRef.current?.focus();
+        window.addEventListener('click', handleClickOutside);
+        return () => {
+            window.removeEventListener('click', handleClickOutside);
+        };
+
     }, []);
 
     return (
@@ -290,7 +298,7 @@ function NavBar() {
 
                 {
                     filteredProducts.length > 0 && (
-                        <ul className="absolute mx-4 left-0 right-0 bg-white border rounded-lg top-full max-h-64 overflow-y-scroll z-50 hide-scrollbar">
+                        <ul className="absolute mx-4 left-0 right-0 bg-white border rounded-lg top-full max-h-64 overflow-y-scroll z-[45] hide-scrollbar">
                             {
                                 filteredProducts.map((product, index) => {
                                     return (
